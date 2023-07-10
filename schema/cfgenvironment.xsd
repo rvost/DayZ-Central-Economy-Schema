@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="env" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="file">
+    <xs:complexType>
+      <xs:attribute name="path" type="xs:string" />
+      <xs:attribute name="usable" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="item">
+    <xs:complexType>
+      <xs:attribute name="name" type="xs:string" />
+      <xs:attribute name="val" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="env" msdata:IsDataSet="true" msdata:Locale="en-US">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="file" />
+        <xs:element ref="item" />
+        <xs:element name="territories">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="file" minOccurs="0" maxOccurs="unbounded" />
+              <xs:element name="territory" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="file" minOccurs="0" maxOccurs="unbounded" />
+                    <xs:element name="agent" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="spawn" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:attribute name="configName" type="xs:string" />
+                              <xs:attribute name="chance" type="xs:string" />
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element ref="item" minOccurs="0" maxOccurs="unbounded" />
+                        </xs:sequence>
+                        <xs:attribute name="type" type="xs:string" />
+                        <xs:attribute name="chance" type="xs:string" />
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element ref="item" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                  <xs:attribute name="type" type="xs:string" />
+                  <xs:attribute name="name" type="xs:string" />
+                  <xs:attribute name="behavior" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

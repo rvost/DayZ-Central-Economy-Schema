@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="eventposdef" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="eventposdef" msdata:IsDataSet="true" msdata:Locale="en-US">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="event">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="zone" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="smin" type="xs:string" />
+                  <xs:attribute name="smax" type="xs:string" />
+                  <xs:attribute name="dmin" type="xs:string" />
+                  <xs:attribute name="dmax" type="xs:string" />
+                  <xs:attribute name="r" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="pos" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="x" type="xs:string" />
+                  <xs:attribute name="z" type="xs:string" />
+                  <xs:attribute name="a" type="xs:string" />
+                  <xs:attribute name="y" type="xs:string" />
+                  <xs:attribute name="group" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

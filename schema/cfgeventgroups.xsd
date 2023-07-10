@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="eventgroupdef" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="eventgroupdef" msdata:IsDataSet="true" msdata:Locale="en-US">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="group">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="child" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="type" type="xs:string" />
+                  <xs:attribute name="deloot" type="xs:string" />
+                  <xs:attribute name="lootmax" type="xs:string" />
+                  <xs:attribute name="lootmin" type="xs:string" />
+                  <xs:attribute name="x" type="xs:string" />
+                  <xs:attribute name="z" type="xs:string" />
+                  <xs:attribute name="a" type="xs:string" />
+                  <xs:attribute name="y" type="xs:string" />
+                  <xs:attribute name="spawnsecondary" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="economy" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="economy" msdata:IsDataSet="true" msdata:Locale="en-US">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dynamic">
+          <xs:complexType>
+            <xs:attribute name="init" type="xs:string" />
+            <xs:attribute name="load" type="xs:string" />
+            <xs:attribute name="respawn" type="xs:string" />
+            <xs:attribute name="save" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="animals">
+          <xs:complexType>
+            <xs:attribute name="init" type="xs:string" />
+            <xs:attribute name="load" type="xs:string" />
+            <xs:attribute name="respawn" type="xs:string" />
+            <xs:attribute name="save" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="zombies">
+          <xs:complexType>
+            <xs:attribute name="init" type="xs:string" />
+            <xs:attribute name="load" type="xs:string" />
+            <xs:attribute name="respawn" type="xs:string" />
+            <xs:attribute name="save" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="vehicles">
+          <xs:complexType>
+            <xs:attribute name="init" type="xs:string" />
+            <xs:attribute name="load" type="xs:string" />
+            <xs:attribute name="respawn" type="xs:string" />
+            <xs:attribute name="save" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="randoms">
+          <xs:complexType>
+            <xs:attribute name="init" type="xs:string" />
+            <xs:attribute name="load" type="xs:string" />
+            <xs:attribute name="respawn" type="xs:string" />
+            <xs:attribute name="save" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="custom">
+          <xs:complexType>
+            <xs:attribute name="init" type="xs:string" />
+            <xs:attribute name="load" type="xs:string" />
+            <xs:attribute name="respawn" type="xs:string" />
+            <xs:attribute name="save" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="building">
+          <xs:complexType>
+            <xs:attribute name="init" type="xs:string" />
+            <xs:attribute name="load" type="xs:string" />
+            <xs:attribute name="respawn" type="xs:string" />
+            <xs:attribute name="save" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="player">
+          <xs:complexType>
+            <xs:attribute name="init" type="xs:string" />
+            <xs:attribute name="load" type="xs:string" />
+            <xs:attribute name="respawn" type="xs:string" />
+            <xs:attribute name="save" type="xs:string" />
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
