@@ -30,6 +30,7 @@
               <xs:element name="value" minOccurs="0" maxOccurs="unbounded">
                 <xs:complexType>
                   <xs:attribute name="name" type="xs:string" />
+                  <xs:attribute name="user" type="xs:string" />
                 </xs:complexType>
               </xs:element>
               <xs:element name="container" minOccurs="0" maxOccurs="unbounded">

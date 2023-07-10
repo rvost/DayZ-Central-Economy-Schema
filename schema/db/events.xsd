@@ -23,6 +23,7 @@
                   <xs:attribute name="deletable" type="xs:string" />
                   <xs:attribute name="init_random" type="xs:string" />
                   <xs:attribute name="remove_damaged" type="xs:string" />
+                  <xs:attribute name="sec_spawner" type="xs:string" />
                 </xs:complexType>
               </xs:element>
               <xs:element name="children" minOccurs="0" maxOccurs="unbounded">

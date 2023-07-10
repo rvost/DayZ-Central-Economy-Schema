@@ -1,8 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema id="messages" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-  <xs:element name="messages" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+  <xs:element name="messages" msdata:IsDataSet="true" msdata:Locale="en-US">
     <xs:complexType>
-      <xs:choice minOccurs="0" maxOccurs="unbounded" />
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="message">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="delay" type="xs:string" minOccurs="0" />
+              <xs:element name="repeat" type="xs:string" minOccurs="0" />
+              <xs:element name="deadline" type="xs:string" minOccurs="0" />
+              <xs:element name="onconnect" type="xs:string" minOccurs="0" />
+              <xs:element name="shutdown" type="xs:string" minOccurs="0" />
+              <xs:element name="text" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
     </xs:complexType>
   </xs:element>
 </xs:schema>
