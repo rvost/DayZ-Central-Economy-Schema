@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="map" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-  <xs:element name="map" msdata:IsDataSet="true" msdata:Locale="en-US">
+<xs:schema id="map" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="map">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="group">
           <xs:complexType>
-            <xs:attribute name="name" type="xs:string" />
-            <xs:attribute name="pos" type="xs:string" />
-            <xs:attribute name="a" type="xs:string" />
+            <xs:attribute name="name" type="xs:string" use="required"/>
+            <xs:attribute name="pos" type="xs:string" use="required"/>
+            <xs:attribute name="a" type="xs:float" use="required"/>
           </xs:complexType>
         </xs:element>
         <xs:element name="include">
           <xs:complexType>
-            <xs:attribute name="file" type="xs:string" />
+            <xs:attribute name="file" type="xs:string" use="required"/>
           </xs:complexType>
         </xs:element>
       </xs:choice>

@@ -1,22 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="spawnabletypes" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+<xs:schema id="spawnabletypes" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="item">
     <xs:complexType>
-      <xs:attribute name="name" type="xs:string" />
-      <xs:attribute name="chance" type="xs:string" />
+      <xs:attribute name="name" type="xs:string" use="required" />
+      <xs:attribute name="chance" type="xs:float" />
     </xs:complexType>
   </xs:element>
-  <xs:element name="spawnabletypes" msdata:IsDataSet="true" msdata:Locale="en-US">
+  <xs:element name="spawnabletypes">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element ref="item" />
         <xs:element name="type">
           <xs:complexType>
-            <xs:sequence>
-              <xs:element name="hoarder" type="xs:string" minOccurs="0" msdata:Ordinal="1" />
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="hoarder" type="xs:string" minOccurs="0" />
               <xs:element name="tag" minOccurs="0" maxOccurs="unbounded">
                 <xs:complexType>
-                  <xs:attribute name="name" type="xs:string" />
+                  <xs:attribute name="name" type="xs:string" use="required" />
                 </xs:complexType>
               </xs:element>
               <xs:element name="cargo" minOccurs="0" maxOccurs="unbounded">
@@ -25,13 +24,13 @@
                     <xs:element ref="item" minOccurs="0" maxOccurs="unbounded" />
                   </xs:sequence>
                   <xs:attribute name="preset" type="xs:string" />
-                  <xs:attribute name="chance" type="xs:string" />
+                  <xs:attribute name="chance" type="xs:float" />
                 </xs:complexType>
               </xs:element>
               <xs:element name="damage" minOccurs="0" maxOccurs="unbounded">
                 <xs:complexType>
-                  <xs:attribute name="min" type="xs:string" />
-                  <xs:attribute name="max" type="xs:string" />
+                  <xs:attribute name="min" type="xs:float" />
+                  <xs:attribute name="max" type="xs:float" />
                 </xs:complexType>
               </xs:element>
               <xs:element name="attachments" minOccurs="0" maxOccurs="unbounded">
@@ -39,12 +38,12 @@
                   <xs:sequence>
                     <xs:element ref="item" minOccurs="0" maxOccurs="unbounded" />
                   </xs:sequence>
-                  <xs:attribute name="chance" type="xs:string" />
+                  <xs:attribute name="chance" type="xs:float" />
                   <xs:attribute name="preset" type="xs:string" />
                 </xs:complexType>
               </xs:element>
-            </xs:sequence>
-            <xs:attribute name="name" type="xs:string" />
+            </xs:choice>
+            <xs:attribute name="name" type="xs:string" use="required" />
           </xs:complexType>
         </xs:element>
       </xs:choice>

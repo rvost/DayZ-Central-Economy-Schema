@@ -1,51 +1,53 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="types" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-  <xs:element name="types" msdata:IsDataSet="true" msdata:Locale="en-US">
+<xs:schema id="types" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="types">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="type">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="nominal" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
-              <xs:element name="lifetime" type="xs:string" minOccurs="0" msdata:Ordinal="1" />
-              <xs:element name="restock" type="xs:string" minOccurs="0" msdata:Ordinal="2" />
-              <xs:element name="min" type="xs:string" minOccurs="0" msdata:Ordinal="3" />
-              <xs:element name="quantmin" type="xs:string" minOccurs="0" msdata:Ordinal="4" />
-              <xs:element name="quantmax" type="xs:string" minOccurs="0" msdata:Ordinal="5" />
-              <xs:element name="cost" type="xs:string" minOccurs="0" msdata:Ordinal="6" />
-              <xs:element name="flags" minOccurs="0" maxOccurs="unbounded">
-                <xs:complexType>
-                  <xs:attribute name="count_in_cargo" type="xs:string" />
-                  <xs:attribute name="count_in_hoarder" type="xs:string" />
-                  <xs:attribute name="count_in_map" type="xs:string" />
-                  <xs:attribute name="count_in_player" type="xs:string" />
-                  <xs:attribute name="crafted" type="xs:string" />
-                  <xs:attribute name="deloot" type="xs:string" />
-                </xs:complexType>
-              </xs:element>
-              <xs:element name="category" minOccurs="0" maxOccurs="unbounded">
-                <xs:complexType>
-                  <xs:attribute name="name" type="xs:string" />
-                </xs:complexType>
-              </xs:element>
-              <xs:element name="tag" minOccurs="0" maxOccurs="unbounded">
-                <xs:complexType>
-                  <xs:attribute name="name" type="xs:string" />
-                </xs:complexType>
-              </xs:element>
-              <xs:element name="usage" minOccurs="0" maxOccurs="unbounded">
-                <xs:complexType>
-                  <xs:attribute name="name" type="xs:string" />
-                </xs:complexType>
-              </xs:element>
-              <xs:element name="value" minOccurs="0" maxOccurs="unbounded">
-                <xs:complexType>
-                  <xs:attribute name="name" type="xs:string" />
-                  <xs:attribute name="user" type="xs:string" />
-                </xs:complexType>
-              </xs:element>
+              <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="nominal" type="xs:int" />
+                <xs:element name="lifetime" type="xs:int" />
+                <xs:element name="restock" type="xs:int" />
+                <xs:element name="min" type="xs:int" />
+                <xs:element name="quantmin" type="xs:int" />
+                <xs:element name="quantmax" type="xs:int" />
+                <xs:element name="cost" type="xs:int" />
+                <xs:element name="flags">
+                  <xs:complexType>
+                    <xs:attribute name="count_in_cargo" type="xs:boolean" use="required" />
+                    <xs:attribute name="count_in_hoarder" type="xs:boolean" use="required" />
+                    <xs:attribute name="count_in_map" type="xs:boolean" use="required" />
+                    <xs:attribute name="count_in_player" type="xs:boolean" use="required" />
+                    <xs:attribute name="crafted" type="xs:boolean" use="required" />
+                    <xs:attribute name="deloot" type="xs:boolean" use="required" />
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="category">
+                  <xs:complexType>
+                    <xs:attribute name="name" type="xs:string" use="required" />
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="tag">
+                  <xs:complexType>
+                    <xs:attribute name="name" type="xs:string" />
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="usage">
+                  <xs:complexType>
+                    <xs:attribute name="name" type="xs:string" />
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="value">
+                  <xs:complexType>
+                    <xs:attribute name="name" type="xs:string" />
+                    <xs:attribute name="user" type="xs:string" />
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
             </xs:sequence>
-            <xs:attribute name="name" type="xs:string" />
+            <xs:attribute name="name" type="xs:string" use="required" />
           </xs:complexType>
         </xs:element>
       </xs:choice>

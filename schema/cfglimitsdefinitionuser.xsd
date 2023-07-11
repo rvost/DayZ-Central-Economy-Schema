@@ -1,21 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="user_lists" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-  <xs:element name="user_lists" msdata:IsDataSet="true" msdata:Locale="en-US">
+<xs:schema id="user_lists" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="user_lists">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="usageflags">
           <xs:complexType>
             <xs:sequence>
-               <xs:element name="user" minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="user" minOccurs="0" maxOccurs="unbounded">
                 <xs:complexType>
                   <xs:sequence>
                     <xs:element name="usage" minOccurs="0" maxOccurs="unbounded">
                       <xs:complexType>
-                        <xs:attribute name="name" type="xs:string" />
+                        <xs:attribute name="name" type="xs:string" use="required" />
                       </xs:complexType>
                     </xs:element>
                   </xs:sequence>
-                  <xs:attribute name="name" type="xs:string" />
+                  <xs:attribute name="name" type="xs:string" use="required"/>
                 </xs:complexType>
               </xs:element>
             </xs:sequence>
@@ -24,16 +24,16 @@
         <xs:element name="valueflags">
           <xs:complexType>
             <xs:sequence>
-               <xs:element name="user" minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="user" minOccurs="0" maxOccurs="unbounded">
                 <xs:complexType>
                   <xs:sequence>
                     <xs:element name="value" minOccurs="0" maxOccurs="unbounded">
                       <xs:complexType>
-                        <xs:attribute name="name" type="xs:string" />
+                        <xs:attribute name="name" type="xs:string" use="required" />
                       </xs:complexType>
                     </xs:element>
                   </xs:sequence>
-                  <xs:attribute name="name" type="xs:string" />
+                  <xs:attribute name="name" type="xs:string" use="required"/>
                 </xs:complexType>
               </xs:element>
             </xs:sequence>

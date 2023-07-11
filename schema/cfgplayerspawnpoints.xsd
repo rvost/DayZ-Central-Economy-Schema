@@ -1,46 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="playerspawnpoints" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+<xs:schema id="playerspawnpoints" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="generator_posbubbles">
     <xs:complexType>
       <xs:sequence>
         <xs:element name="pos" minOccurs="0" maxOccurs="unbounded">
           <xs:complexType>
-            <xs:attribute name="x" type="xs:string" />
-            <xs:attribute name="z" type="xs:string" />
+            <xs:attribute name="x" type="xs:float" />
+            <xs:attribute name="z" type="xs:float" />
           </xs:complexType>
         </xs:element>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="playerspawnpoints" msdata:IsDataSet="true" msdata:Locale="en-US">
+  <xs:element name="playerspawnpoints">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element ref="generator_posbubbles" />
         <xs:element name="fresh">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="spawn_params" minOccurs="0" maxOccurs="unbounded">
                 <xs:complexType>
-                  <xs:sequence>
-                    <xs:element name="min_dist_infected" type="xs:string" minOccurs="0" />
-                    <xs:element name="max_dist_infected" type="xs:string" minOccurs="0" />
-                    <xs:element name="min_dist_player" type="xs:string" minOccurs="0" />
-                    <xs:element name="max_dist_player" type="xs:string" minOccurs="0" />
-                    <xs:element name="min_dist_static" type="xs:string" minOccurs="0" />
-                    <xs:element name="max_dist_static" type="xs:string" minOccurs="0" />
-                  </xs:sequence>
+                  <xs:all>
+                    <xs:element name="min_dist_infected" type="xs:float" minOccurs="0" />
+                    <xs:element name="max_dist_infected" type="xs:float" minOccurs="0" />
+                    <xs:element name="min_dist_player" type="xs:float" minOccurs="0" />
+                    <xs:element name="max_dist_player" type="xs:float" minOccurs="0" />
+                    <xs:element name="min_dist_static" type="xs:float" minOccurs="0" />
+                    <xs:element name="max_dist_static" type="xs:float" minOccurs="0" />
+                  </xs:all>
                 </xs:complexType>
               </xs:element>
               <xs:element name="generator_params" minOccurs="0" maxOccurs="unbounded">
                 <xs:complexType>
                   <xs:sequence>
-                    <xs:element name="grid_density" type="xs:string" minOccurs="0" />
-                    <xs:element name="grid_width" type="xs:string" minOccurs="0" />
-                    <xs:element name="grid_height" type="xs:string" minOccurs="0" />
-                    <xs:element name="min_dist_static" type="xs:string" minOccurs="0" />
-                    <xs:element name="max_dist_static" type="xs:string" minOccurs="0" />
-                    <xs:element name="min_steepness" type="xs:string" minOccurs="0" />
-                    <xs:element name="max_steepness" type="xs:string" minOccurs="0" />
+                    <xs:element name="grid_density" type="xs:int" minOccurs="0" />
+                    <xs:element name="grid_width" type="xs:float" minOccurs="0" />
+                    <xs:element name="grid_height" type="xs:float" minOccurs="0" />
+                    <xs:element name="min_dist_static" type="xs:float" minOccurs="0" />
+                    <xs:element name="max_dist_static" type="xs:float" minOccurs="0" />
+                    <xs:element name="min_steepness" type="xs:float" minOccurs="0" />
+                    <xs:element name="max_steepness" type="xs:float" minOccurs="0" />
                   </xs:sequence>
                 </xs:complexType>
               </xs:element>

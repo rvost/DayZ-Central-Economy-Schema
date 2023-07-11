@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="economycore" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-  <xs:element name="economycore" msdata:IsDataSet="true" msdata:Locale="en-US">
+<xs:schema id="economycore" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" >
+  <xs:element name="economycore">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="classes">
@@ -9,8 +9,23 @@
               <xs:element name="rootclass" minOccurs="0" maxOccurs="unbounded">
                 <xs:complexType>
                   <xs:attribute name="name" type="xs:string" />
-                  <xs:attribute name="reportMemoryLOD" type="xs:string" />
-                  <xs:attribute name="act" type="xs:string" />
+                  <xs:attribute name="reportMemoryLOD">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="yes" />
+                        <xs:enumeration value="no" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="act">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="none" />
+                        <xs:enumeration value="character" />
+                        <xs:enumeration value="car" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
                 </xs:complexType>
               </xs:element>
             </xs:sequence>
@@ -33,12 +48,23 @@
             <xs:sequence>
               <xs:element name="file" minOccurs="0" maxOccurs="unbounded">
                 <xs:complexType>
-                  <xs:attribute name="name" type="xs:string" />
-                  <xs:attribute name="type" type="xs:string" />
+                  <xs:attribute name="name" type="xs:string" use="required" />
+                  <xs:attribute name="type" use="required">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="economy" />
+                        <xs:enumeration value="events" />
+                        <xs:enumeration value="globals" />
+                        <xs:enumeration value="messages" />
+                        <xs:enumeration value="spawnabletypes" />
+                        <xs:enumeration value="types" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
                 </xs:complexType>
               </xs:element>
             </xs:sequence>
-            <xs:attribute name="folder" type="xs:string" />
+            <xs:attribute name="folder" type="xs:string" use="required" />
           </xs:complexType>
         </xs:element>
       </xs:choice>

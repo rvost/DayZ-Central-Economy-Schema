@@ -1,73 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="economy" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-  <xs:element name="economy" msdata:IsDataSet="true" msdata:Locale="en-US">
+<xs:schema id="economy" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="EconomyConfigLine">
+    <xs:attribute name="init" type="xs:boolean" use="required" />
+    <xs:attribute name="load" type="xs:boolean" use="required" />
+    <xs:attribute name="respawn" type="xs:boolean" use="required" />
+    <xs:attribute name="save" type="xs:boolean" use="required" />
+  </xs:complexType>
+  <xs:element name="economy">
     <xs:complexType>
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="dynamic">
-          <xs:complexType>
-            <xs:attribute name="init" type="xs:string" />
-            <xs:attribute name="load" type="xs:string" />
-            <xs:attribute name="respawn" type="xs:string" />
-            <xs:attribute name="save" type="xs:string" />
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="animals">
-          <xs:complexType>
-            <xs:attribute name="init" type="xs:string" />
-            <xs:attribute name="load" type="xs:string" />
-            <xs:attribute name="respawn" type="xs:string" />
-            <xs:attribute name="save" type="xs:string" />
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="zombies">
-          <xs:complexType>
-            <xs:attribute name="init" type="xs:string" />
-            <xs:attribute name="load" type="xs:string" />
-            <xs:attribute name="respawn" type="xs:string" />
-            <xs:attribute name="save" type="xs:string" />
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="vehicles">
-          <xs:complexType>
-            <xs:attribute name="init" type="xs:string" />
-            <xs:attribute name="load" type="xs:string" />
-            <xs:attribute name="respawn" type="xs:string" />
-            <xs:attribute name="save" type="xs:string" />
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="randoms">
-          <xs:complexType>
-            <xs:attribute name="init" type="xs:string" />
-            <xs:attribute name="load" type="xs:string" />
-            <xs:attribute name="respawn" type="xs:string" />
-            <xs:attribute name="save" type="xs:string" />
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="custom">
-          <xs:complexType>
-            <xs:attribute name="init" type="xs:string" />
-            <xs:attribute name="load" type="xs:string" />
-            <xs:attribute name="respawn" type="xs:string" />
-            <xs:attribute name="save" type="xs:string" />
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="building">
-          <xs:complexType>
-            <xs:attribute name="init" type="xs:string" />
-            <xs:attribute name="load" type="xs:string" />
-            <xs:attribute name="respawn" type="xs:string" />
-            <xs:attribute name="save" type="xs:string" />
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="player">
-          <xs:complexType>
-            <xs:attribute name="init" type="xs:string" />
-            <xs:attribute name="load" type="xs:string" />
-            <xs:attribute name="respawn" type="xs:string" />
-            <xs:attribute name="save" type="xs:string" />
-          </xs:complexType>
-        </xs:element>
-      </xs:choice>
+      <xs:all>
+        <xs:element name="dynamic" type="EconomyConfigLine" minOccurs="0"/>
+        <xs:element name="animals" type="EconomyConfigLine" minOccurs="0"/>
+        <xs:element name="zombies" type="EconomyConfigLine" minOccurs="0"/>
+        <xs:element name="vehicles" type="EconomyConfigLine" minOccurs="0"/>
+        <xs:element name="randoms" type="EconomyConfigLine" minOccurs="0"/>
+        <xs:element name="custom" type="EconomyConfigLine" minOccurs="0"/>
+        <xs:element name="building" type="EconomyConfigLine" minOccurs="0"/>
+        <xs:element name="player" type="EconomyConfigLine" minOccurs="0"/>
+      </xs:all>
     </xs:complexType>
   </xs:element>
 </xs:schema>

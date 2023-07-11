@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="prototype" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-  <xs:element name="prototype" msdata:IsDataSet="true" msdata:Locale="en-US">
+<xs:schema id="prototype" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="prototype">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="clusters">
@@ -8,8 +8,8 @@
             <xs:sequence>
               <xs:element name="export" minOccurs="0" maxOccurs="unbounded">
                 <xs:complexType>
-                  <xs:attribute name="name" type="xs:string" />
-                  <xs:attribute name="shape" type="xs:string" />
+                  <xs:attribute name="name" type="xs:string" use="required"/>
+                  <xs:attribute name="shape" type="xs:string" use="required"/>
                 </xs:complexType>
               </xs:element>
             </xs:sequence>
@@ -18,31 +18,31 @@
         <xs:element name="cluster">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="de" minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="de" minOccurs="0" maxOccurs="1">
                 <xs:complexType>
-                  <xs:attribute name="name" type="xs:string" />
+                  <xs:attribute name="name" type="xs:string" use="required"/>
                 </xs:complexType>
               </xs:element>
-              <xs:element name="container" minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="container" minOccurs="0" maxOccurs="1">
                 <xs:complexType>
                   <xs:sequence>
                     <xs:element name="point" minOccurs="0" maxOccurs="unbounded">
                       <xs:complexType>
-                        <xs:attribute name="pos" type="xs:string" />
-                        <xs:attribute name="range" type="xs:string" />
-                        <xs:attribute name="height" type="xs:string" />
-                        <xs:attribute name="flags" type="xs:string" />
+                        <xs:attribute name="pos" type="xs:string" use="required" />
+                        <xs:attribute name="range" type="xs:float" use="required"/>
+                        <xs:attribute name="height" type="xs:float" use="required"/>
+                        <xs:attribute name="flags" type="xs:int" />
                       </xs:complexType>
                     </xs:element>
                   </xs:sequence>
-                  <xs:attribute name="name" type="xs:string" />
-                  <xs:attribute name="lootmax" type="xs:string" />
+                  <xs:attribute name="name" type="xs:string" use="required"/>
+                  <xs:attribute name="lootmax" type="xs:int" />
                 </xs:complexType>
               </xs:element>
             </xs:sequence>
-            <xs:attribute name="name" type="xs:string" />
-            <xs:attribute name="lootmax" type="xs:string" />
-            <xs:attribute name="maxinstances" type="xs:string" />
+            <xs:attribute name="name" type="xs:string" use="required"/>
+            <xs:attribute name="lootmax" type="xs:int" use="required"/>
+            <xs:attribute name="maxinstances" type="xs:int" />
           </xs:complexType>
         </xs:element>
       </xs:choice>

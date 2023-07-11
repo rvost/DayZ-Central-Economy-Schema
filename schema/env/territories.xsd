@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="territory-type" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-  <xs:element name="territory-type" msdata:IsDataSet="true" msdata:Locale="en-US">
+<xs:schema id="territory-type" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="territory-type">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="territory">
@@ -8,18 +8,18 @@
             <xs:sequence>
               <xs:element name="zone" minOccurs="0" maxOccurs="unbounded">
                 <xs:complexType>
-                  <xs:attribute name="name" type="xs:string" />
-                  <xs:attribute name="smin" type="xs:string" />
-                  <xs:attribute name="smax" type="xs:string" />
-                  <xs:attribute name="dmin" type="xs:string" />
-                  <xs:attribute name="dmax" type="xs:string" />
-                  <xs:attribute name="x" type="xs:string" />
-                  <xs:attribute name="z" type="xs:string" />
-                  <xs:attribute name="r" type="xs:string" />
+                  <xs:attribute name="name" type="xs:string" use="required"/>
+                  <xs:attribute name="smin" type="xs:int" use="required" />
+                  <xs:attribute name="smax" type="xs:int" use="required" />
+                  <xs:attribute name="dmin" type="xs:int" use="required" />
+                  <xs:attribute name="dmax" type="xs:int" use="required" />
+                  <xs:attribute name="x" type="xs:float" use="required" />
+                  <xs:attribute name="z" type="xs:float" use="required" />
+                  <xs:attribute name="r" type="xs:float" use="required" />
                 </xs:complexType>
               </xs:element>
             </xs:sequence>
-            <xs:attribute name="color" type="xs:string" />
+            <xs:attribute name="color" type="xs:string" use="required" />
           </xs:complexType>
         </xs:element>
       </xs:choice>

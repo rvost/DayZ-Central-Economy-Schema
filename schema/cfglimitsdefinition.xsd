@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="lists" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-  <xs:element name="lists" msdata:IsDataSet="true" msdata:Locale="en-US">
+<xs:schema id="lists" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="lists">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="categories">
@@ -8,7 +8,7 @@
             <xs:sequence>
               <xs:element name="category" minOccurs="0" maxOccurs="unbounded">
                 <xs:complexType>
-                  <xs:attribute name="name" type="xs:string" />
+                  <xs:attribute name="name" type="xs:string" use="required" />
                 </xs:complexType>
               </xs:element>
             </xs:sequence>
@@ -19,7 +19,7 @@
             <xs:sequence>
               <xs:element name="tag" minOccurs="0" maxOccurs="unbounded">
                 <xs:complexType>
-                  <xs:attribute name="name" type="xs:string" />
+                  <xs:attribute name="name" type="xs:string" use="required" />
                 </xs:complexType>
               </xs:element>
             </xs:sequence>
@@ -30,7 +30,7 @@
             <xs:sequence>
               <xs:element name="usage" minOccurs="0" maxOccurs="unbounded">
                 <xs:complexType>
-                  <xs:attribute name="name" type="xs:string" />
+                  <xs:attribute name="name" type="xs:string" use="required" />
                 </xs:complexType>
               </xs:element>
             </xs:sequence>
@@ -41,7 +41,7 @@
             <xs:sequence>
               <xs:element name="value" minOccurs="0" maxOccurs="unbounded">
                 <xs:complexType>
-                  <xs:attribute name="name" type="xs:string" />
+                  <xs:attribute name="name" type="xs:string" use="required" />
                 </xs:complexType>
               </xs:element>
             </xs:sequence>

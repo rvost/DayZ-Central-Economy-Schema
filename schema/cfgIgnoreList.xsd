@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="ignore" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-  <xs:element name="ignore" msdata:IsDataSet="true" msdata:Locale="en-US">
+<xs:schema id="ignore" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="ignore">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="type">
           <xs:complexType>
-            <xs:attribute name="name" type="xs:string" />
+            <xs:attribute name="name" type="xs:string" use="required"/>
           </xs:complexType>
         </xs:element>
       </xs:choice>
