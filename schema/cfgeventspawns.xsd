@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema id="eventposdef" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="eventposdef">
+    <xs:annotation>
+      <xs:documentation>Definitions of position and rotation for certain types of dynamic events.</xs:documentation>
+    </xs:annotation>
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="event">

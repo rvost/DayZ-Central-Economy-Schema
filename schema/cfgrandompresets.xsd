@@ -1,36 +1,76 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema id="randompresets" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:simpleType name="Probability">
+    <xs:annotation>
+      <xs:documentation>Probability represented as a floating point number between 0 and 1.</xs:documentation>
+    </xs:annotation>
     <xs:restriction base="xs:float">
       <xs:minInclusive value="0" />
       <xs:maxInclusive value="1" />
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="item">
+    <xs:annotation>
+      <xs:documentation>Definition for item in the preset.</xs:documentation>
+    </xs:annotation>
     <xs:complexType>
-      <xs:attribute name="name" type="xs:string" use="required" />
-      <xs:attribute name="chance" type="Probability" />
+      <xs:attribute name="name" type="xs:string" use="required">
+        <xs:annotation>
+          <xs:documentation>Item class name.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="chance" type="Probability">
+        <xs:annotation>
+          <xs:documentation>Item spawn probability.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
     </xs:complexType>
   </xs:element>
   <xs:element name="randompresets">
+    <xs:annotation>
+      <xs:documentation>Definitions of presets for random cargo or attachment spawning. Used in
+        `cfgspawnabletypes.xml`.</xs:documentation>
+    </xs:annotation>
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="cargo">
+          <xs:annotation>
+            <xs:documentation>Preset for the contents of a container or inventory.</xs:documentation>
+          </xs:annotation>
           <xs:complexType>
             <xs:sequence>
               <xs:element ref="item" minOccurs="0" maxOccurs="unbounded" />
             </xs:sequence>
-            <xs:attribute name="chance" type="Probability" />
-            <xs:attribute name="name" type="xs:string" use="required" />
+            <xs:attribute name="chance" type="Probability">
+              <xs:annotation>
+                <xs:documentation>The probability of selecting this preset from the available ones.</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="name" type="xs:string" use="required">
+              <xs:annotation>
+                <xs:documentation>Preset name.</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
           </xs:complexType>
         </xs:element>
         <xs:element name="attachments">
+          <xs:annotation>
+            <xs:documentation>Preset for the item with attachment slots.</xs:documentation>
+          </xs:annotation>
           <xs:complexType>
             <xs:sequence>
               <xs:element ref="item" minOccurs="0" maxOccurs="unbounded" />
             </xs:sequence>
-            <xs:attribute name="chance" type="Probability" />
-            <xs:attribute name="name" type="xs:string" use="required" />
+            <xs:attribute name="chance" type="Probability">
+              <xs:annotation>
+                <xs:documentation>The probability of selecting this preset from the available ones.</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="name" type="xs:string" use="required">
+              <xs:annotation>
+                <xs:documentation>Preset name.</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
           </xs:complexType>
         </xs:element>
       </xs:choice>

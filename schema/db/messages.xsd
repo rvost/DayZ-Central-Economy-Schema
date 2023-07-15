@@ -1,17 +1,51 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema id="messages" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="messages">
+    <xs:annotation>
+      <xs:documentation>Server message configuration. Can be split into multiple files.</xs:documentation>
+    </xs:annotation>
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="message">
+          <xs:annotation>
+            <xs:documentation>Message configuration.</xs:documentation>
+          </xs:annotation>
           <xs:complexType>
             <xs:all>
-              <xs:element name="delay" type="xs:unsignedInt" minOccurs="0" />
-              <xs:element name="repeat" type="xs:unsignedInt" minOccurs="0" />
-              <xs:element name="deadline" type="xs:unsignedInt" minOccurs="0" />
-              <xs:element name="onconnect" type="xs:boolean" minOccurs="0" />
-              <xs:element name="shutdown" type="xs:boolean" minOccurs="0" />
-              <xs:element name="text" type="xs:string" minOccurs="0" />
+              <xs:element name="delay" type="xs:nonNegativeInteger" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>Time interval (in minutes) between messages.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="repeat" type="xs:nonNegativeInteger" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>The number of times to repeat the message. If not specified, the
+                    message will be repeated indefinitely.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="deadline" type="xs:nonNegativeInteger" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>Countdown time (in minutes). Should be used independently of
+                    `repeat`.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="onconnect" type="xs:boolean" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>Whether to display the message to the user when connecting to
+                    the server.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="shutdown" type="xs:boolean" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>Whether to shut down the server after the countdown. Should be
+                    used in conjunction with `deadline`.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="text" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>Message body.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
             </xs:all>
           </xs:complexType>
         </xs:element>
