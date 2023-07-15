@@ -7,13 +7,39 @@
           <xs:complexType>
             <xs:sequence>
               <xs:choice minOccurs="0" maxOccurs="unbounded">
-                <xs:element name="nominal" type="xs:int" />
-                <xs:element name="lifetime" type="xs:int" />
-                <xs:element name="restock" type="xs:int" />
-                <xs:element name="min" type="xs:int" />
-                <xs:element name="quantmin" type="xs:int" />
-                <xs:element name="quantmax" type="xs:int" />
-                <xs:element name="cost" type="xs:int" />
+                <xs:element name="nominal" type="xs:unsignedInt"/>
+                <xs:element name="lifetime">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:unsignedInt">
+                      <xs:maxInclusive value="3888000"/>
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="restock" type="xs:unsignedInt"/>
+                <xs:element name="min" type="xs:unsignedInt" />
+                <xs:element name="quantmin">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:int">
+                      <xs:minInclusive value="-1" />
+                      <xs:maxInclusive value="100" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="quantmax">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:int">
+                      <xs:minInclusive value="-1" />
+                      <xs:maxInclusive value="100" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="cost">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:unsignedInt">
+                      <xs:maxInclusive value="100" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
                 <xs:element name="flags">
                   <xs:complexType>
                     <xs:attribute name="count_in_cargo" type="xs:boolean" use="required" />

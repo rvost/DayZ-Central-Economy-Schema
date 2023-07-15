@@ -8,11 +8,11 @@
             <xs:sequence>
               <xs:element name="zone" minOccurs="0" maxOccurs="unbounded">
                 <xs:complexType>
-                  <xs:attribute name="smin" type="xs:int" />
-                  <xs:attribute name="smax" type="xs:int" />
-                  <xs:attribute name="dmin" type="xs:int" />
-                  <xs:attribute name="dmax" type="xs:int" />
-                  <xs:attribute name="r" type="xs:int" />
+                  <xs:attribute name="smin" type="xs:unsignedInt" />
+                  <xs:attribute name="smax" type="xs:unsignedInt" />
+                  <xs:attribute name="dmin" type="xs:unsignedInt" />
+                  <xs:attribute name="dmax" type="xs:unsignedInt" />
+                  <xs:attribute name="r" type="xs:unsignedInt" />
                 </xs:complexType>
               </xs:element>
               <xs:element name="pos" minOccurs="0" maxOccurs="unbounded">

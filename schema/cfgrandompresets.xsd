@@ -1,9 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema id="randompresets" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="Probability">
+    <xs:restriction base="xs:float">
+      <xs:minInclusive value="0" />
+      <xs:maxInclusive value="1" />
+    </xs:restriction>
+  </xs:simpleType>
   <xs:element name="item">
     <xs:complexType>
-      <xs:attribute name="name" type="xs:string" use="required"/>
-      <xs:attribute name="chance" type="xs:float" />
+      <xs:attribute name="name" type="xs:string" use="required" />
+      <xs:attribute name="chance" type="Probability" />
     </xs:complexType>
   </xs:element>
   <xs:element name="randompresets">
@@ -14,7 +20,7 @@
             <xs:sequence>
               <xs:element ref="item" minOccurs="0" maxOccurs="unbounded" />
             </xs:sequence>
-            <xs:attribute name="chance" type="xs:float" />
+            <xs:attribute name="chance" type="Probability" />
             <xs:attribute name="name" type="xs:string" use="required" />
           </xs:complexType>
         </xs:element>
@@ -23,8 +29,8 @@
             <xs:sequence>
               <xs:element ref="item" minOccurs="0" maxOccurs="unbounded" />
             </xs:sequence>
-            <xs:attribute name="chance" type="xs:float" />
-            <xs:attribute name="name" type="xs:string" use="required"/>
+            <xs:attribute name="chance" type="Probability" />
+            <xs:attribute name="name" type="xs:string" use="required" />
           </xs:complexType>
         </xs:element>
       </xs:choice>

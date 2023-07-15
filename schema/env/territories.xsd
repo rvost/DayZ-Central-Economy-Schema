@@ -9,13 +9,13 @@
               <xs:element name="zone" minOccurs="0" maxOccurs="unbounded">
                 <xs:complexType>
                   <xs:attribute name="name" type="xs:string" use="required"/>
-                  <xs:attribute name="smin" type="xs:int" use="required" />
-                  <xs:attribute name="smax" type="xs:int" use="required" />
-                  <xs:attribute name="dmin" type="xs:int" use="required" />
-                  <xs:attribute name="dmax" type="xs:int" use="required" />
+                  <xs:attribute name="smin" type="xs:unsignedInt" use="required" />
+                  <xs:attribute name="smax" type="xs:unsignedInt" use="required" />
+                  <xs:attribute name="dmin" type="xs:unsignedInt" use="required" />
+                  <xs:attribute name="dmax" type="xs:unsignedInt" use="required" />
                   <xs:attribute name="x" type="xs:float" use="required" />
                   <xs:attribute name="z" type="xs:float" use="required" />
-                  <xs:attribute name="r" type="xs:float" use="required" />
+                  <xs:attribute name="r" type="xs:unsignedInt" use="required" />
                 </xs:complexType>
               </xs:element>
             </xs:sequence>

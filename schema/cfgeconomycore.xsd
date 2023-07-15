@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="economycore" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" >
+<xs:schema id="economycore" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="economycore">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -8,7 +8,7 @@
             <xs:sequence>
               <xs:element name="rootclass" minOccurs="0" maxOccurs="unbounded">
                 <xs:complexType>
-                  <xs:attribute name="name" type="xs:string" />
+                  <xs:attribute name="name" type="xs:string" use="required" />
                   <xs:attribute name="reportMemoryLOD">
                     <xs:simpleType>
                       <xs:restriction base="xs:string">
@@ -36,8 +36,36 @@
             <xs:sequence>
               <xs:element name="default" minOccurs="0" maxOccurs="unbounded">
                 <xs:complexType>
-                  <xs:attribute name="name" type="xs:string" />
-                  <xs:attribute name="value" type="xs:string" />
+                  <xs:attribute name="name" use="required">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="world_segments" />
+                        <xs:enumeration value="backup_period" />
+                        <xs:enumeration value="backup_count" />
+                        <xs:enumeration value="backup_startup" />
+                        <xs:enumeration value="dyn_radius" />
+                        <xs:enumeration value="dyn_smin" />
+                        <xs:enumeration value="dyn_smax" />
+                        <xs:enumeration value="dyn_dmin" />
+                        <xs:enumeration value="dyn_dmax" />
+                        <xs:enumeration value="save_events_startup" />
+                        <xs:enumeration value="save_types_startup" />
+                        <xs:enumeration value="log_hivewarning" />
+                        <xs:enumeration value="log_storageinfo" />
+                        <xs:enumeration value="log_missionfilewarning" />
+                        <xs:enumeration value="log_ce_loop" />
+                        <xs:enumeration value="log_ce_dynamicevent" />
+                        <xs:enumeration value="log_ce_vehicle" />
+                        <xs:enumeration value="log_ce_lootspawn" />
+                        <xs:enumeration value="log_ce_lootcleanup" />
+                        <xs:enumeration value="log_ce_lootrespawn" />
+                        <xs:enumeration value="log_ce_statistics" />
+                        <xs:enumeration value="log_ce_zombie" />
+                        <xs:enumeration value="log_ce_animal" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="value" type="xs:string" use="required" />
                 </xs:complexType>
               </xs:element>
             </xs:sequence>

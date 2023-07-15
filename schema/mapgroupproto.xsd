@@ -1,5 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema id="prototype" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="Coordinates">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="-?\d+(\.\d+)? -?\d+(\.\d+)? -?\d+(\.\d+)?" />
+    </xs:restriction>
+  </xs:simpleType>
   <xs:element name="prototype">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
@@ -9,7 +14,7 @@
               <xs:element name="default" minOccurs="0" maxOccurs="unbounded">
                 <xs:complexType>
                   <xs:attribute name="name" type="xs:string" use="required" />
-                  <xs:attribute name="lootmax" type="xs:int" />
+                  <xs:attribute name="lootmax" type="xs:unsignedInt" />
                   <xs:attribute name="enabled">
                     <xs:simpleType>
                       <xs:restriction base="xs:string">
@@ -19,8 +24,8 @@
                     </xs:simpleType>
                   </xs:attribute>
                   <xs:attribute name="de" type="xs:string" />
-                  <xs:attribute name="width" type="xs:int" />
-                  <xs:attribute name="height" type="xs:int" />
+                  <xs:attribute name="width" type="xs:unsignedInt" />
+                  <xs:attribute name="height" type="xs:unsignedInt" />
                 </xs:complexType>
               </xs:element>
             </xs:sequence>
@@ -50,20 +55,32 @@
                     </xs:element>
                     <xs:element name="tag" minOccurs="0" maxOccurs="unbounded">
                       <xs:complexType>
-                        <xs:attribute name="name" type="xs:string" use="required"/>
+                        <xs:attribute name="name" type="xs:string" use="required" />
                       </xs:complexType>
                     </xs:element>
                     <xs:element name="point" minOccurs="0" maxOccurs="unbounded">
                       <xs:complexType>
-                        <xs:attribute name="pos" type="xs:string" />
-                        <xs:attribute name="range" type="xs:float" />
-                        <xs:attribute name="height" type="xs:float" />
-                        <xs:attribute name="flags" type="xs:int" />
+                        <xs:attribute name="pos" type="Coordinates" />
+                        <xs:attribute name="range">
+                          <xs:simpleType>
+                            <xs:restriction base="xs:float">
+                              <xs:minInclusive value="0" />
+                            </xs:restriction>
+                          </xs:simpleType>
+                        </xs:attribute>
+                        <xs:attribute name="height">
+                          <xs:simpleType>
+                            <xs:restriction base="xs:float">
+                              <xs:minInclusive value="0" />
+                            </xs:restriction>
+                          </xs:simpleType>
+                        </xs:attribute>
+                        <xs:attribute name="flags" type="xs:unsignedInt" />
                       </xs:complexType>
                     </xs:element>
                   </xs:sequence>
-                  <xs:attribute name="name" type="xs:string" use="required"/>
-                  <xs:attribute name="lootmax" type="xs:int" />
+                  <xs:attribute name="name" type="xs:string" use="required" />
+                  <xs:attribute name="lootmax" type="xs:unsignedInt" />
                 </xs:complexType>
               </xs:element>
               <xs:element name="dispatch" minOccurs="0" maxOccurs="unbounded">
@@ -71,9 +88,9 @@
                   <xs:sequence>
                     <xs:element name="proxy" minOccurs="0" maxOccurs="unbounded">
                       <xs:complexType>
-                        <xs:attribute name="type" type="xs:string" use="required"/>
-                        <xs:attribute name="pos" type="xs:string" use="required"/>
-                        <xs:attribute name="rpy" type="xs:string" use="required"/>
+                        <xs:attribute name="type" type="xs:string" use="required" />
+                        <xs:attribute name="pos" type="Coordinates" use="required" />
+                        <xs:attribute name="rpy" type="Coordinates" use="required" />
                         <xs:attribute name="dechance" type="xs:float" />
                       </xs:complexType>
                     </xs:element>
@@ -83,7 +100,7 @@
               </xs:element>
             </xs:sequence>
             <xs:attribute name="name" type="xs:string" />
-            <xs:attribute name="lootmax" type="xs:string" />
+            <xs:attribute name="lootmax" type="xs:unsignedInt" />
           </xs:complexType>
         </xs:element>
       </xs:choice>

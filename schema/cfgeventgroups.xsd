@@ -10,8 +10,8 @@
                 <xs:complexType>
                   <xs:attribute name="type" type="xs:string" use="required"/>
                   <xs:attribute name="deloot" type="xs:boolean" />
-                  <xs:attribute name="lootmax" type="xs:string"  />
-                  <xs:attribute name="lootmin" type="xs:string" />
+                  <xs:attribute name="lootmax" type="xs:unsignedInt"  />
+                  <xs:attribute name="lootmin" type="xs:unsignedInt" />
                   <xs:attribute name="x" type="xs:float" use="required"/>
                   <xs:attribute name="z" type="xs:float" use="required"/>
                   <xs:attribute name="a" type="xs:float" use="required"/>

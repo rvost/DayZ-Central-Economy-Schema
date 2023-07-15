@@ -5,8 +5,20 @@
       <xs:sequence>
         <xs:element name="pos" minOccurs="0" maxOccurs="unbounded">
           <xs:complexType>
-            <xs:attribute name="x" type="xs:float" />
-            <xs:attribute name="z" type="xs:float" />
+            <xs:attribute name="x">
+              <xs:simpleType>
+                <xs:restriction base="xs:float">
+                  <xs:minInclusive value="0" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="z">
+              <xs:simpleType>
+                <xs:restriction base="xs:float">
+                  <xs:minInclusive value="0" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:attribute>
           </xs:complexType>
         </xs:element>
       </xs:sequence>
@@ -21,25 +33,99 @@
               <xs:element name="spawn_params" minOccurs="0" maxOccurs="unbounded">
                 <xs:complexType>
                   <xs:all>
-                    <xs:element name="min_dist_infected" type="xs:float" minOccurs="0" />
-                    <xs:element name="max_dist_infected" type="xs:float" minOccurs="0" />
-                    <xs:element name="min_dist_player" type="xs:float" minOccurs="0" />
-                    <xs:element name="max_dist_player" type="xs:float" minOccurs="0" />
-                    <xs:element name="min_dist_static" type="xs:float" minOccurs="0" />
-                    <xs:element name="max_dist_static" type="xs:float" minOccurs="0" />
+                    <xs:element name="min_dist_infected" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:float">
+                          <xs:minInclusive value="0" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="max_dist_infected" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:float">
+                          <xs:minInclusive value="0" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="min_dist_player" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:float">
+                          <xs:minInclusive value="0" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="max_dist_player" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:float">
+                          <xs:minInclusive value="0" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="min_dist_static" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:float">
+                          <xs:minInclusive value="0" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="max_dist_static" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:float">
+                          <xs:minInclusive value="0" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
                   </xs:all>
                 </xs:complexType>
               </xs:element>
               <xs:element name="generator_params" minOccurs="0" maxOccurs="unbounded">
                 <xs:complexType>
                   <xs:sequence>
-                    <xs:element name="grid_density" type="xs:int" minOccurs="0" />
-                    <xs:element name="grid_width" type="xs:float" minOccurs="0" />
-                    <xs:element name="grid_height" type="xs:float" minOccurs="0" />
-                    <xs:element name="min_dist_static" type="xs:float" minOccurs="0" />
-                    <xs:element name="max_dist_static" type="xs:float" minOccurs="0" />
-                    <xs:element name="min_steepness" type="xs:float" minOccurs="0" />
-                    <xs:element name="max_steepness" type="xs:float" minOccurs="0" />
+                    <xs:element name="grid_density" type="xs:unsignedInt" minOccurs="0" />
+                    <xs:element name="grid_width" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:float">
+                          <xs:minInclusive value="0" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="grid_height" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:float">
+                          <xs:minInclusive value="0" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="min_dist_static" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:float">
+                          <xs:minInclusive value="0" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="max_dist_static" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:float">
+                          <xs:minInclusive value="0" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="min_steepness" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:float">
+                          <xs:minInclusive value="-90" />
+                          <xs:maxInclusive value="90" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="max_steepness" minOccurs="0">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:float">
+                          <xs:minInclusive value="-90" />
+                          <xs:maxInclusive value="90" />
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
                   </xs:sequence>
                 </xs:complexType>
               </xs:element>

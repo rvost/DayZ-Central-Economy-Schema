@@ -8,8 +8,8 @@
             <xs:sequence>
               <xs:element name="export" minOccurs="0" maxOccurs="unbounded">
                 <xs:complexType>
-                  <xs:attribute name="name" type="xs:string" use="required"/>
-                  <xs:attribute name="shape" type="xs:string" use="required"/>
+                  <xs:attribute name="name" type="xs:string" use="required" />
+                  <xs:attribute name="shape" type="xs:string" use="required" />
                 </xs:complexType>
               </xs:element>
             </xs:sequence>
@@ -20,7 +20,7 @@
             <xs:sequence>
               <xs:element name="de" minOccurs="0" maxOccurs="1">
                 <xs:complexType>
-                  <xs:attribute name="name" type="xs:string" use="required"/>
+                  <xs:attribute name="name" type="xs:string" use="required" />
                 </xs:complexType>
               </xs:element>
               <xs:element name="container" minOccurs="0" maxOccurs="1">
@@ -28,21 +28,39 @@
                   <xs:sequence>
                     <xs:element name="point" minOccurs="0" maxOccurs="unbounded">
                       <xs:complexType>
-                        <xs:attribute name="pos" type="xs:string" use="required" />
-                        <xs:attribute name="range" type="xs:float" use="required"/>
-                        <xs:attribute name="height" type="xs:float" use="required"/>
-                        <xs:attribute name="flags" type="xs:int" />
+                        <xs:attribute name="pos" use="required">
+                          <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                              <xs:pattern value="-?\d+(\.\d+)? -?\d+(\.\d+)? -?\d+(\.\d+)?" />
+                            </xs:restriction>
+                          </xs:simpleType>
+                        </xs:attribute>
+                        <xs:attribute name="range" use="required">
+                          <xs:simpleType>
+                            <xs:restriction base="xs:float">
+                              <xs:minInclusive value="0" />
+                            </xs:restriction>
+                          </xs:simpleType>
+                        </xs:attribute>
+                        <xs:attribute name="height" use="required">
+                          <xs:simpleType>
+                            <xs:restriction base="xs:float">
+                              <xs:minInclusive value="0" />
+                            </xs:restriction>
+                          </xs:simpleType>
+                        </xs:attribute>
+                        <xs:attribute name="flags" type="xs:unsignedInt" />
                       </xs:complexType>
                     </xs:element>
                   </xs:sequence>
-                  <xs:attribute name="name" type="xs:string" use="required"/>
-                  <xs:attribute name="lootmax" type="xs:int" />
+                  <xs:attribute name="name" type="xs:string" use="required" />
+                  <xs:attribute name="lootmax" type="xs:unsignedInt" />
                 </xs:complexType>
               </xs:element>
             </xs:sequence>
-            <xs:attribute name="name" type="xs:string" use="required"/>
-            <xs:attribute name="lootmax" type="xs:int" use="required"/>
-            <xs:attribute name="maxinstances" type="xs:int" />
+            <xs:attribute name="name" type="xs:string" use="required" />
+            <xs:attribute name="lootmax" type="xs:unsignedInt" use="required" />
+            <xs:attribute name="maxinstances" type="xs:unsignedInt" />
           </xs:complexType>
         </xs:element>
       </xs:choice>
