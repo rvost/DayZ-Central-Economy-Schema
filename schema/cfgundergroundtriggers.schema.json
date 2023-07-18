@@ -1,0 +1,118 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"type": "object",
+	"title": "DayZ cfgundergroundtriggers",
+	"description": "DayZ Underground Areas Configuration",
+	"properties": {
+		"Triggers": {
+			"description": "Triggers detect player presence and based on their type manage the eye accommodation level of the player but also perform some other duties, like triggering playback of the underground ambient sound.",
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"Position": {
+						"description": "World position of the trigger entity in the world",
+						"type": "array",
+						"items": {
+							"type": "number"
+						},
+						"minItems": 3,
+						"maxItems": 3
+					},
+					"Orientation": {
+						"description": "Rotation as Yaw, Pitch, Roll",
+						"type": "array",
+						"items": {
+							"type": "number"
+						},
+						"minItems": 3,
+						"maxItems": 3
+					},
+					"Size": {
+						"description": "Size in X, Y, Z coordinates",
+						"type": "array",
+						"items": {
+							"type": "number"
+						},
+						"minItems": 3,
+						"maxItems": 3
+					},
+					"EyeAccommodation": {
+						"description": "How much eye accommodation the player has when inside this trigger",
+						"type": "number"
+					},
+					"Breadcrumbs": {
+						"description": "",
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"Position": {
+									"description": "World position of the breadcrumb in the world",
+									"type": "array",
+									"items": {
+										"type": "number"
+									},
+									"minItems": 3,
+									"maxItems": 3
+								},
+								"EyeAccommodation": {
+									"description": "Eye accommodation weight of the breadcrumb",
+									"type": "number"
+								},
+								"UseRaycast": {
+									"description": "should we cast a ray from player to this breadcrumb (if set to 1, this breadcrumb will influence the accommodation only if the trace is successful)",
+									"anyOf": [
+										{
+											"type": "boolean"
+										},
+										{
+											"type": "integer",
+											"enum": [
+												0,
+												1
+											]
+										}
+									]
+								},
+								"Radius": {
+									"description": "How far in meters is this breadcrumb able to influence player eye accommodation, when set to -1, a default value will be used",
+									"anyOf": [
+										{
+											"type": "number",
+											"minimum": 0
+										},
+										{
+											"type": "integer",
+											"enum": [
+												-1
+											]
+										}
+									]
+								}
+							},
+							"required": [
+								"Position",
+								"EyeAccommodation",
+								"UseRaycast",
+								"Radius"
+							]
+						}
+					},
+					"InterpolationSpeed": {
+						"description": "How quickly we change the eye accommodation from previous value to target value in time",
+						"type": "number",
+						"minimum": 0
+					}
+				},
+				"required": [
+					"Position",
+					"Orientation",
+					"Size",
+					"EyeAccommodation",
+					"Breadcrumbs"
+				]
+			}
+		}
+	}
+}

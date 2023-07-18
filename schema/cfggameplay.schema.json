@@ -1,0 +1,675 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"type": "object",
+	"title": "DayZ cfggameplay",
+	"description": "DayZ Gameplay Settings",
+	"properties": {
+		"version": {
+			"description": "Internal parameter to keep track of the version of the file",
+			"type": "integer"
+		},
+		"GeneralData": {
+			"description": "",
+			"type": "object",
+			"properties": {
+				"disableBaseDamage": {
+					"description": "Damage from structures built through base-building",
+					"anyOf": [
+						{
+							"type": "boolean"
+						},
+						{
+							"type": "integer",
+							"enum": [
+								0,
+								1
+							]
+						}
+					]
+				},
+				"disableContainerDamage": {
+					"description": "Disable damage from items such as tents and barrels",
+					"anyOf": [
+						{
+							"type": "boolean"
+						},
+						{
+							"type": "integer",
+							"enum": [
+								0,
+								1
+							]
+						}
+					]
+				},
+				"disableRespawnDialog": {
+					"description": "Disable a UI dialogue window in which the player selects the type of respawn they wish to perform after pressing the respawn button",
+					"anyOf": [
+						{
+							"type": "boolean"
+						},
+						{
+							"type": "integer",
+							"enum": [
+								0,
+								1
+							]
+						}
+					]
+				}
+			}
+		},
+		"PlayerData": {
+			"description": "",
+			"type": "object",
+			"properties": {
+				"disablePersonalLight": {
+					"description": "Disables the omnipresent personal light lighting up objects close to player during night-time",
+					"anyOf": [
+						{
+							"type": "boolean"
+						},
+						{
+							"type": "integer",
+							"enum": [
+								0,
+								1
+							]
+						}
+					]
+				},
+				"StaminaData": {
+					"description": "",
+					"type": "object",
+					"properties": {
+						"sprintStaminaModifierErc": {
+							"description": "Modifies the rate at which the stamina is being consumed during erected sprint",
+							"type": "number",
+							"minimum": 0
+						},
+						"sprintStaminaModifierCro": {
+							"description": "Modifies the rate at which the stamina is being consumed during crouched sprint",
+							"type": "number",
+							"minimum": 0
+						},
+						"staminaWeightLimitThreshold": {
+							"description": "This amount of stamina points (divided by 1000) will not count towards stamina weight deduction",
+							"type": "number",
+							"minimum": 0
+						},
+						"staminaMax": {
+							"description": "Maximum stamina (setting to 0 may produce unexpected results)",
+							"type": "number",
+							"minimum": 0
+						},
+						"staminaKgToStaminaPercentPenalty": {
+							"description": "Multiplier used when calculating stamina points deducted from max stamina given the player load",
+							"type": "number",
+							"minimum": 0
+						},
+						"staminaMinCap": {
+							"description": "Minimum size of stamina cap (setting to 0 may produce unexpected results)",
+							"type": "number",
+							"minimum": 0
+						},
+						"sprintSwimmingStaminaModifier": {
+							"description": "Modifies the rate at which the stamina is being consumed during fast swimming",
+							"type": "number",
+							"minimum": 0
+						},
+						"sprintLadderStaminaModifier": {
+							"description": "Modifies the rate at which the stamina is being consumed during fast ladder climbing",
+							"type": "number",
+							"minimum": 0
+						},
+						"meleeStaminaModifier": {
+							"description": "Modifies how much stamina is being consumed when performing heavy melee attacks and evasion",
+							"type": "number",
+							"minimum": 0
+						},
+						"obstacleTraversalStaminaModifier": {
+							"description": "Modifies how much stamina is being consumed when performing jumping, climbing and vaulting",
+							"type": "number",
+							"minimum": 0
+						},
+						"holdBreathStaminaModifier": {
+							"description": "Modifies the rate at which the stamina is being consumed when holding breath",
+							"type": "number",
+							"minimum": 0
+						}
+					}
+				},
+				"ShockHandlingData": {
+					"description": "",
+					"type": "object",
+					"properties": {
+						"shockRefillSpeedConscious": {
+							"description": "Shock value recovery while the player is conscious (per second)",
+							"type": "number",
+							"minimum": 0
+						},
+						"shockRefillSpeedUnconscious": {
+							"description": "Shock value recovery while the player is unconscious (per second)",
+							"type": "number",
+							"minimum": 0
+						},
+						"allowRefillSpeedModifier": {
+							"description": "Allow/disallow modifier of Shock value recovery based on ammo type settings (typically faster waking-up from uncon after getting shot)",
+							"anyOf": [
+								{
+									"type": "boolean"
+								},
+								{
+									"type": "integer",
+									"enum": [
+										0,
+										1
+									]
+								}
+							]
+						}
+					}
+				},
+				"MovementData": {
+					"description": "",
+					"type": "object",
+					"properties": {
+						"timeToStrafeJog": {
+							"description": "Time to blend strafing (diagonal movement) while jogging",
+							"type": "number",
+							"minimum": 0.01
+						},
+						"rotationSpeedJog": {
+							"description": "Rotation speed of the character while jogging",
+							"type": "number",
+							"minimum": 0.01
+						},
+						"timeToSprint": {
+							"description": "Time to reach sprint from jog",
+							"type": "number",
+							"minimum": 0.01
+						},
+						"timeToStrafeSprint": {
+							"description": "Time to blend strafing (diagonal movement) while sprinting",
+							"type": "number",
+							"minimum": 0.01
+						},
+						"rotationSpeedSprint": {
+							"description": "Rotation speed of the character while sprinting",
+							"type": "number",
+							"minimum": 0.01
+						},
+						"allowStaminaAffectInertia": {
+							"description": "When enabled allows stamina value influence player's inertia",
+							"anyOf": [
+								{
+									"type": "boolean"
+								},
+								{
+									"type": "integer",
+									"enum": [
+										0,
+										1
+									]
+								}
+							]
+						}
+					}
+				},
+				"DrowningData": {
+					"description": "",
+					"type": "object",
+					"properties": {
+						"staminaDepletionSpeed": {
+							"description": "Stamina depleted per second while drowning",
+							"type": "number",
+							"minimum": 0
+						},
+						"healthDepletionSpeed": {
+							"description": "Health depleted per second while drowning",
+							"type": "number",
+							"minimum": 0
+						},
+						"shockDepletionSpeed": {
+							"description": "Shock depleted per second while drowning",
+							"type": "number",
+							"minimum": 0
+						}
+					}
+				}
+			}
+		},
+		"WorldsData": {
+			"description": "",
+			"type": "object",
+			"properties": {
+				"lightingConfig": {
+					"description": "What type of lighting will be used during night time (0 = bright, 1 = dark)",
+					"type": "integer",
+					"enum": [
+						0,
+						1
+					]
+				},
+				"objectSpawnersArr": {
+					"description": "File names of the JSON files containing spawner data",
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
+				},
+				"environmentMinTemps": {
+					"description": "List of minimal temperatures (12 values exactly)",
+					"type": "array",
+					"items": {
+						"type": "number"
+					},
+					"minItems": 12,
+					"maxItems": 12
+				},
+				"environmentMaxTemps": {
+					"description": "List of maximal temperatures (12 values exactly)",
+					"type": "array",
+					"items": {
+						"type": "number"
+					},
+					"minItems": 12,
+					"maxItems": 12
+				},
+				"wetnessWeightModifiers": {
+					"description": "Values for item weight modification based on wetness level of the item. Values from left to right: [DRY, DAMP, WET, SOAKED, DRENCHED]",
+					"type": "array",
+					"items": {
+						"type": "number"
+					},
+					"minItems": 5,
+					"maxItems": 5
+				}
+			}
+		},
+		"BaseBuildingData": {
+			"description": "",
+			"type": "object",
+			"properties": {
+				"HologramData": {
+					"description": "",
+					"type": "object",
+					"properties": {
+						"disableIsCollidingBBoxCheck": {
+							"description": "Allows placement when the hologram is colliding with objects in the world",
+							"anyOf": [
+								{
+									"type": "boolean"
+								},
+								{
+									"type": "integer",
+									"enum": [
+										0,
+										1
+									]
+								}
+							]
+						},
+						"disableIsCollidingPlayerCheck": {
+							"description": "Allows placement when the hologram is colliding with player",
+							"anyOf": [
+								{
+									"type": "boolean"
+								},
+								{
+									"type": "integer",
+									"enum": [
+										0,
+										1
+									]
+								}
+							]
+						},
+						"disableIsClippingRoofCheck": {
+							"description": "Allows placement where placing would cause clipping with the roof",
+							"anyOf": [
+								{
+									"type": "boolean"
+								},
+								{
+									"type": "integer",
+									"enum": [
+										0,
+										1
+									]
+								}
+							]
+						},
+						"disableIsBaseViableCheck": {
+							"description": "Allows placement on dynamic objects and other otherwise incompatible base",
+							"anyOf": [
+								{
+									"type": "boolean"
+								},
+								{
+									"type": "integer",
+									"enum": [
+										0,
+										1
+									]
+								}
+							]
+						},
+						"disableIsCollidingGPlotCheck": {
+							"description": "Allows placement of garden plots despite incompatible surface type",
+							"anyOf": [
+								{
+									"type": "boolean"
+								},
+								{
+									"type": "integer",
+									"enum": [
+										0,
+										1
+									]
+								}
+							]
+						},
+						"disableIsCollidingAngleCheck": {
+							"description": "Allows placement despite exceeding roll/pitch/yaw limits",
+							"anyOf": [
+								{
+									"type": "boolean"
+								},
+								{
+									"type": "integer",
+									"enum": [
+										0,
+										1
+									]
+								}
+							]
+						},
+						"disableIsPlacementPermittedCheck": {
+							"description": "Allows placement event when not permitted by rudimentary checks",
+							"anyOf": [
+								{
+									"type": "boolean"
+								},
+								{
+									"type": "integer",
+									"enum": [
+										0,
+										1
+									]
+								}
+							]
+						},
+						"disableHeightPlacementCheck": {
+							"description": "Allows placement with limited height space",
+							"anyOf": [
+								{
+									"type": "boolean"
+								},
+								{
+									"type": "integer",
+									"enum": [
+										0,
+										1
+									]
+								}
+							]
+						},
+						"disableIsUnderwaterCheck": {
+							"description": "Allows placement under water",
+							"anyOf": [
+								{
+									"type": "boolean"
+								},
+								{
+									"type": "integer",
+									"enum": [
+										0,
+										1
+									]
+								}
+							]
+						},
+						"disableIsInTerrainCheck": {
+							"description": "Allows placement when clipping with terrain",
+							"anyOf": [
+								{
+									"type": "boolean"
+								},
+								{
+									"type": "integer",
+									"enum": [
+										0,
+										1
+									]
+								}
+							]
+						}
+					}
+				},
+				"ConstructionData": {
+					"description": "",
+					"type": "object",
+					"properties": {
+						"disablePerformRoofCheck": {
+							"description": "Allows construction when clipping with the roof",
+							"anyOf": [
+								{
+									"type": "boolean"
+								},
+								{
+									"type": "integer",
+									"enum": [
+										0,
+										1
+									]
+								}
+							]
+						},
+						"disableIsCollidingCheck": {
+							"description": "Allows construction when colliding with objects in the world",
+							"anyOf": [
+								{
+									"type": "boolean"
+								},
+								{
+									"type": "integer",
+									"enum": [
+										0,
+										1
+									]
+								}
+							]
+						},
+						"disableDistanceCheck": {
+							"description": "Prevents construction when player gets bellow specified range",
+							"anyOf": [
+								{
+									"type": "boolean"
+								},
+								{
+									"type": "integer",
+									"enum": [
+										0,
+										1
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"UIData": {
+			"description": "",
+			"type": "object",
+			"properties": {
+				"use3DMap": {
+					"description": "Enables use of the 3D map only (disables the default 2d map overlay)",
+					"anyOf": [
+						{
+							"type": "boolean"
+						},
+						{
+							"type": "integer",
+							"enum": [
+								0,
+								1
+							]
+						}
+					]
+				},
+				"HitIndicationData": {
+					"description": "",
+					"type": "object",
+					"properties": {
+						"hitDirectionOverrideEnabled": {
+							"description": "Decides whether the values get used or not. Since anything undefined in the 'HitIndicationData' class (or any class in json file) is considered zero, allows us to determine that some valid data had been loaded.",
+							"anyOf": [
+								{
+									"type": "boolean"
+								},
+								{
+									"type": "integer",
+									"enum": [
+										0,
+										1
+									]
+								}
+							]
+						},
+						"hitDirectionBehaviour": {
+							"description": "Dictates general behaviour of the hit indicator. 0 == Disabled, 1 == Static, 2 == Dynamic (moving when displayed, WIP)",
+							"type": "integer",
+							"enum": [
+								0,
+								1,
+								2
+							]
+						},
+						"hitDirectionStyle": {
+							"description": "Dictates which type of indicator gets used. Set of images and position calculations. 0 == 'splash', 1 == 'spike', 2 == 'arrow'",
+							"type": "integer",
+							"enum": [
+								0,
+								1,
+								2
+							]
+						},
+						"hitDirectionIndicatorColorStr": {
+							"description": "Color of the indicator widget, in ARGB format. The color is written in string form",
+							"type": "string",
+							"pattern": "^0x([0-9a-fA-F]{2}){4}$"
+						},
+						"hitDirectionMaxDuration": {
+							"description": "Maximal duration of the hit indicator. Actual duration is between 0.6..1.0 of the defined value, depending on the severity of the hit (which generally means heavier hits == longer indication)",
+							"type": "number",
+							"minimum": 0
+						},
+						"hitDirectionBreakPointRelative": {
+							"description": "Fraction of the actual duration, after which the indicator begins to recede (currently fade-out only), 0.0 = fades from the beginning, 0.5 == fades after 50% duration has elapsed, 1.0 == no fading",
+							"type": "number",
+							"minimum": 0,
+							"maximum": 1
+						},
+						"hitDirectionScatter": {
+							"description": "Amount of scatter to induce inaccuracy to the indication. Actual scatter is randomized by the amount of degrees in both directions (± value, so value of 10 gives a potential scatter of 20°)",
+							"type": "number",
+							"minimum": 0
+						},
+						"hitIndicationPostProcessEnabled": {
+							"description": "Allows for disabling of the old hit effect (red flash)",
+							"anyOf": [
+								{
+									"type": "boolean"
+								},
+								{
+									"type": "integer",
+									"enum": [
+										0,
+										1
+									]
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"MapData": {
+			"description": "",
+			"type": "object",
+			"properties": {
+				"ignoreMapOwnership": {
+					"description": "Player can open a map (and just the map) using dedicated input ('M') even without map in player's inventory.",
+					"anyOf": [
+						{
+							"type": "boolean"
+						},
+						{
+							"type": "integer",
+							"enum": [
+								0,
+								1
+							]
+						}
+					]
+				},
+				"ignoreNavItemsOwnership": {
+					"description": "Compass and/or GPS receiver are not needed for displaying helpers on the 2D map.",
+					"anyOf": [
+						{
+							"type": "boolean"
+						},
+						{
+							"type": "integer",
+							"enum": [
+								0,
+								1
+							]
+						}
+					]
+				},
+				"displayPlayerPosition": {
+					"description": "Shows the red maker on the map, on player's position. It also display direction on the marker.",
+					"anyOf": [
+						{
+							"type": "boolean"
+						},
+						{
+							"type": "integer",
+							"enum": [
+								0,
+								1
+							]
+						}
+					]
+				},
+				"displayNavInfo": {
+					"description": "Hide GPS and Compass UI from the map legend completely (even when player has those items in inventory).",
+					"anyOf": [
+						{
+							"type": "boolean"
+						},
+						{
+							"type": "integer",
+							"enum": [
+								0,
+								1
+							]
+						}
+					]
+				}
+			}
+		}
+	},
+	"required": [
+		"version",
+		"GeneralData",
+		"PlayerData",
+		"WorldsData",
+		"BaseBuildingData",
+		"UIData",
+		"MapData"
+	]
+}

@@ -1,0 +1,189 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"type": "object",
+	"title": "DayZ cfgEffectArea",
+	"description": "Contaminated areas configuration",
+	"properties": {
+		"Areas": {
+			"description": "All contaminated areas user wants to define",
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"AreaName": {
+						"description": "Name to help differentiate in file but can also be used for debug",
+						"type": "string"
+					},
+					"Type": {
+						"description": "Class name of EffectArea derived class one wants to spawn",
+						"type": "string"
+					},
+					"TriggerType": {
+						"description": "Trigger type ( typename as a string ), leave empty if no trigger desired",
+						"type": "string"
+					},
+					"Data": {
+						"type": "object",
+						"properties": {
+							"Pos": {
+								"description": "Position of anchor entity, if Y coordinate is non-zero, entity and first layer of particles will not be snapped to ground",
+								"type": "array",
+								"items": {
+									"type": "number"
+								},
+								"minItems": 3,
+								"maxItems": 3
+							},
+							"Radius": {
+								"description": "Radius of zone. Pass -1 to use default value.",
+								"anyOf": [
+									{
+										"type": "number",
+										"minimum": 0
+									},
+									{
+										"type": "integer",
+										"enum": [
+											-1
+										]
+									}
+								]
+							},
+							"PosHeight": {
+								"description": "Height of cylinder area going up from anchor entity position. Pass -1 to use default value",
+								"anyOf": [
+									{
+										"type": "number",
+										"minimum": 0
+									},
+									{
+										"type": "integer",
+										"enum": [
+											-1
+										]
+									}
+								]
+							},
+							"NegHeight": {
+								"description": "Height of cylinder area going down from anchor entity position. Pass -1 to use default value",
+								"anyOf": [
+									{
+										"type": "number",
+										"minimum": 0
+									},
+									{
+										"type": "integer",
+										"enum": [
+											-1
+										]
+									}
+								]
+							},
+							"InnerRingCount": {
+								"description": "The amount of rings user wants inside of area ( does not include outer ring )",
+								"type": "integer"
+							},
+							"InnerPartDist": {
+								"description": "Distance, on a straight line, between two particle emitters on interior rings. If value is strictly superior to radius, NO rings will be spawned. Pass -1 to use default value",
+								"type": "integer",
+								"minimum": -1
+							},
+							"OuterRingToggle": {
+								"description": "Toggle if outer ring is desired ( if yes it will be an additional ring to the inner rings )",
+								"anyOf": [
+									{
+										"type": "boolean"
+									},
+									{
+										"type": "integer",
+										"enum": [
+											0,
+											1
+										]
+									}
+								]
+							},
+							"OuterPartDist": {
+								"description": "Distance, on a straight line, between two particle emitters on most outside ring. Pass -1 to use default value",
+								"type": "integer",
+								"minimum": -1
+							},
+							"OuterOffset": {
+								"description": "The distance with the radius of area (negative value will push outer ring OUTSIDE of radius). Pass -1 to use default value",
+								"type": "integer"
+							},
+							"VerticalLayers": {
+								"description": "The amount of vertical layers user wants to define (in addition to ground level). Pass -1 to use default value",
+								"type": "integer",
+								"minimum": -1
+							},
+							"VerticalOffset": {
+								"description": "Offset between two vertical layers. Pass -1 to use default value",
+								"type": "integer",
+								"minimum": -1
+							},
+							"ParticleName": {
+								"description": "The name of the particle one wants to populate the area with",
+								"type": "string"
+							}
+						},
+						"required": [
+							"Pos",
+							"Radius",
+							"PosHeight",
+							"NegHeight",
+							"InnerRingCount",
+							"InnerPartDist",
+							"OuterRingToggle",
+							"OuterPartDist",
+							"OuterOffset",
+							"VerticalLayers",
+							"VerticalOffset",
+							"ParticleName"
+						]
+					},
+					"PlayerData": {
+						"type": "object",
+						"properties": {
+							"AroundPartName": {
+								"description": "The name of the \"around\" particle to spawn around player when in trigger -> requires trigger to do anything",
+								"type": "string"
+							},
+							"TinyPartName": {
+								"description": "The name of the \"tiny\" particle to spawn around player when in trigger -> requires trigger to do anything",
+								"type": "string"
+							},
+							"PPERequesterType": {
+								"description": "The typename of the Post Process Effect to apply on the player camera when inside the area",
+								"type": "string"
+							}
+						},
+						"required": [
+							"AroundPartName",
+							"TinyPartName",
+							"PPERequesterType"
+						]
+					}
+				},
+				"required": [
+					"AreaName",
+					"Type",
+					"TriggerType",
+					"Data",
+					"PlayerData"
+				]
+			}
+		},
+		"SafePositions": {
+			"type": "array",
+			"items": {
+				"type": "array",
+				"items": {
+					"type": "integer"
+				},
+				"minItems": 2,
+				"maxItems": 2
+			}
+		}
+	}
+}
