@@ -28,7 +28,7 @@ If you prefer a more high-level approach and spreadsheet-like editing rather tha
 
 ## How to
 
-*The process below is described with VS Code in mind, but it can easily be adapted to your preferred editor.*
+### VS Code
 
 1. Install the [XML extension](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-xml).
 2. Open an XML file that you want to validate, press `F1`` or `Ctrl+Shift+P`` and select *XML:Bind to grammar/schema file* command.
@@ -38,6 +38,21 @@ If you prefer a more high-level approach and spreadsheet-like editing rather tha
    - For convenience, all schemas are available online (thanks to Github Pages) at `https://rvost.github.io/DayZ-Central-Economy-Schema/`. So for remote option you provide path starting from this address, e.g. `https://rvost.github.io/DayZ-Central-Economy-Schema/db/types.xsd` for types schema or `https://rvost.github.io/DayZ-Central-Economy-Schema/cfgeventspawns.xsd` for events.
 3. I recommend using the *File Association* option because it works without editing the original xml file.
 4. Repeat this process for each file you want to validate **OR** the take `.vscode/settings.json` file from this repo and copy it to your workspace with all associations already set up.
+
+### Notepad++
+
+1. Install the [XML Tools](https://github.com/morbac/xmltools) plugin (you can follow [this](https://stackoverflow.com/questions/15436183/using-notepad-to-validate-xml-against-an-xsd) tutorial on SO).
+2. Open XML file and press `Ctrl+Shift+Alt+M` (or use Menu if this is your preference `Plugins > XML Tools > Validate Now`) and enter corresponding schema URL (as described above).
+3. Repeat this process for each file you want to validate.
+  
+You can also reference schema in XML file like this 
+```xml
+<spawnabletypes xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' 
+  xsi:noNamespaceSchemaLocation="<URL here>">
+    ...
+</spawnabletypes>
+```
+to avoid having to specify XSD location for every validation.
 
 ## Contributing
 
