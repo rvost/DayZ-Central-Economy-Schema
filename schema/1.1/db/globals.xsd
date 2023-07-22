@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="variables" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+  vc:minVersion="1.1">
+  <xs:element name="variables">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="var">
+          <xs:complexType>
+            <xs:attribute name="name" use="required">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:enumeration value="AnimalMaxCount" />
+                  <xs:enumeration value="CleanupAvoidance" />
+                  <xs:enumeration value="CleanupLifetimeDeadAnimal" />
+                  <xs:enumeration value="CleanupLifetimeDeadInfected" />
+                  <xs:enumeration value="CleanupLifetimeDeadPlayer" />
+                  <xs:enumeration value="CleanupLifetimeDefault" />
+                  <xs:enumeration value="CleanupLifetimeLimit" />
+                  <xs:enumeration value="CleanupLifetimeRuined" />
+                  <xs:enumeration value="FlagRefreshFrequency" />
+                  <xs:enumeration value="FlagRefreshMaxDuration" />
+                  <xs:enumeration value="IdleModeCountdown" />
+                  <xs:enumeration value="IdleModeStartup" />
+                  <xs:enumeration value="InitialSpawn" />
+                  <xs:enumeration value="LootProxyPlacement" />
+                  <xs:enumeration value="RespawnAttempt" />
+                  <xs:enumeration value="RespawnLimit" />
+                  <xs:enumeration value="RespawnTypes" />
+                  <xs:enumeration value="RestartSpawn" />
+                  <xs:enumeration value="SpawnInitial" />
+                  <xs:enumeration value="TimeHopping" />
+                  <xs:enumeration value="TimeLogin" />
+                  <xs:enumeration value="TimeLogout" />
+                  <xs:enumeration value="TimePenalty" />
+                  <xs:enumeration value="ZombieMaxCount" />
+                  <xs:enumeration value="ZoneSpawnDist" />
+                  <xs:enumeration value="WorldWetTempUpdate" />
+                  <xs:enumeration value="FoodDecay" />
+                  <xs:enumeration value="LootDamageMin" />
+                  <xs:enumeration value="LootDamageMax" />
+                  <xs:enumeration value="LootSpawnAvoidance" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="type" use="required">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:enumeration value="0" />
+                  <xs:enumeration value="1" />
+                  <xs:enumeration value="2" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="value" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

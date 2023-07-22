@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="events" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+  vc:minVersion="1.1">
+  <xs:element name="events">
+    <xs:annotation>
+      <xs:documentation>Dynamic event configuration. Used to define events (e.g. helicrashes, cars)
+        and AI presence. Can be split into multiple files.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="event">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="nominal" type="xs:nonNegativeInteger" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>The target number of locations that can have an event spawn.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="min" type="xs:nonNegativeInteger" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>The lower threshold to tell the CE when to start spawning more.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="max" type="xs:nonNegativeInteger" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>The upper threshold to tell the CE when to stop spawning more.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="lifetime" type="xs:nonNegativeInteger" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>The amount of time (in seconds) the event stays on the map
+                    before despawning.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="restock" type="xs:nonNegativeInteger" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>The amount of time (in seconds) between each spawn of an event,
+                    once the minimum value is reached, until the nominal or max value is on the map.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="saferadius" type="xs:nonNegativeInteger" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>The minimum distance (in metres) from a player at which an
+                    instance of an event can spawn.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="distanceradius" type="xs:nonNegativeInteger" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>The minimum distance (in metres) between instances of an event.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="cleanupradius" type="xs:nonNegativeInteger" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>The minimum distance (in metres) from a player at which the
+                    lifetime timer starts.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="secondary" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation></xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="position" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>Determines whether spawn is relative to a `fixed` position or
+                    relative to the `player`.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:enumeration value="fixed" />
+                    <xs:enumeration value="player" />
+                    <xs:enumeration value="uniform" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="limit" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:enumeration value="child">
+                      <xs:annotation>
+                        <xs:documentation>Spawn one of the objects from the `child` lines at each
+                          usable location until the `nominal` value is on the map.</xs:documentation>
+                      </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="custom" />
+                    <xs:enumeration value="mixed">
+                      <xs:annotation>
+                        <xs:documentation>Use a combination of the child min/max values and the
+                          parent min/max values to detrmine the spawn ratios.</xs:documentation>
+                      </xs:annotation>
+                    </xs:enumeration>
+                    <xs:enumeration value="parent" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="active" type="xs:boolean" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>Whether the event is actively spawning on the map.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="flags" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:attribute name="deletable" type="xs:boolean">
+                    <xs:annotation>
+                      <xs:documentation>Whether event spawns can be despawned when the event
+                        lifetime reaches zero.</xs:documentation>
+                    </xs:annotation>
+                  </xs:attribute>
+                  <xs:attribute name="init_random" type="xs:boolean" />
+                  <xs:attribute name="remove_damaged" type="xs:boolean">
+                    <xs:annotation>
+                      <xs:documentation>Whether ruined (car) or killed (animal/zombie) spawns are
+                        removed.</xs:documentation>
+                    </xs:annotation>
+                  </xs:attribute>
+                  <xs:attribute name="sec_spawner" type="xs:boolean" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="children" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>Configuration of objects spawned in the event.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="child" minOccurs="0" maxOccurs="unbounded">
+                      <xs:annotation>
+                        <xs:documentation>Configuration of the objects spawned in the event.</xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:attribute name="lootmax" type="xs:nonNegativeInteger" use="required">
+                          <xs:annotation>
+                            <xs:documentation>The maximum amount of loot that can spawn around an
+                              event.</xs:documentation>
+                          </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="lootmin" type="xs:nonNegativeInteger" use="required">
+                          <xs:annotation>
+                            <xs:documentation>The minimum amount of loot that can spawn around an
+                              event.</xs:documentation>
+                          </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="max" type="xs:nonNegativeInteger" use="required">
+                          <xs:annotation>
+                            <xs:documentation>The maximum number of the game objects that the event
+                              can spawn.</xs:documentation>
+                          </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="min" type="xs:nonNegativeInteger" use="required">
+                          <xs:annotation>
+                            <xs:documentation>The minimum number of the game objects that the event
+                              can spawn.</xs:documentation>
+                          </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="type" type="xs:string" use="required">
+                          <xs:annotation>
+                            <xs:documentation>The class name of the object.</xs:documentation>
+                          </xs:annotation>
+                        </xs:attribute>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:all>
+            <xs:attribute name="name" type="xs:string" use="required">
+              <xs:annotation>
+                <xs:documentation>The name of the event. Should start with a valid event prefix. <br />
+                  `Animal` - must be used when the event spawns animals. <br /> `Item` - must be
+                  used when the event spawns items. <br /> `Vehicle` - must be used when the event
+                  spawns trucks or cars. <br /> `Static` - must be used for events that spawn
+                  buildings and/or other game objects.</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

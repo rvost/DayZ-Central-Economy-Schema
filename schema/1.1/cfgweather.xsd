@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="cfgweather" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+  vc:minVersion="1.1">
+  <xs:simpleType name="UnitValue">
+    <xs:restriction base="xs:float">
+      <xs:minInclusive value="0" />
+      <xs:maxInclusive value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="current">
+    <xs:complexType>
+      <xs:attribute name="actual" type="xs:float" />
+      <xs:attribute name="time" type="xs:unsignedInt" />
+      <xs:attribute name="duration" type="xs:unsignedInt" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="limits">
+    <xs:complexType>
+      <xs:attribute name="min" type="UnitValue" />
+      <xs:attribute name="max" type="UnitValue" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="timelimits">
+    <xs:complexType>
+      <xs:attribute name="min" type="xs:unsignedInt" />
+      <xs:attribute name="max" type="xs:unsignedInt" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="changelimits">
+    <xs:complexType>
+      <xs:attribute name="min" type="UnitValue" />
+      <xs:attribute name="max" type="UnitValue" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="weather">
+    <xs:complexType>
+      <xs:all>
+        <xs:element name="overcast" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:all>
+              <xs:element ref="current" minOccurs="0" maxOccurs="1" />
+              <xs:element ref="limits" minOccurs="0" maxOccurs="1" />
+              <xs:element ref="timelimits" minOccurs="0" maxOccurs="1" />
+              <xs:element ref="changelimits" minOccurs="0" maxOccurs="1" />
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="fog" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:all>
+              <xs:element ref="current" minOccurs="0" maxOccurs="1" />
+              <xs:element ref="limits" minOccurs="0" maxOccurs="1" />
+              <xs:element ref="timelimits" minOccurs="0" maxOccurs="1" />
+              <xs:element ref="changelimits" minOccurs="0" maxOccurs="1" />
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="rain" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:all>
+              <xs:element ref="current" minOccurs="0" maxOccurs="1" />
+              <xs:element ref="limits" minOccurs="0" maxOccurs="1" />
+              <xs:element ref="timelimits" minOccurs="0" maxOccurs="1" />
+              <xs:element ref="changelimits" minOccurs="0" maxOccurs="1" />
+              <xs:element name="thresholds" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:attribute name="min" type="UnitValue" />
+                  <xs:attribute name="max" type="UnitValue" />
+                  <xs:attribute name="end" type="xs:int" />
+                </xs:complexType>
+              </xs:element>
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="wind" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="maxspeed" type="xs:unsignedInt" minOccurs="0" />
+              <xs:element name="params" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:attribute name="min" type="UnitValue" />
+                  <xs:attribute name="max" type="UnitValue" />
+                  <xs:attribute name="frequency" type="xs:unsignedInt" />
+                </xs:complexType>
+              </xs:element>
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="storm" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:attribute name="density" type="UnitValue" />
+            <xs:attribute name="threshold" type="UnitValue" />
+            <xs:attribute name="timeout" type="xs:unsignedInt" />
+          </xs:complexType>
+        </xs:element>
+      </xs:all>
+      <xs:attribute name="reset" type="xs:boolean" />
+      <xs:attribute name="enable" type="xs:boolean" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

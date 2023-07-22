@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="economy" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+  vc:minVersion="1.1">
+  <xs:complexType name="EconomyConfigLine">
+    <xs:attribute name="init" type="xs:boolean" use="required">
+      <xs:annotation>
+        <xs:documentation>Whether to initialise the entity group at server startup.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="load" type="xs:boolean" use="required">
+      <xs:annotation>
+        <xs:documentation>Whether to load the state of the entity group at server startup.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="respawn" type="xs:boolean" use="required">
+      <xs:annotation>
+        <xs:documentation>Whether to respawn entities from the group at server startup.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="save" type="xs:boolean" use="required">
+      <xs:annotation>
+        <xs:documentation>Whether to save the state of the entity group.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:element name="economy">
+    <xs:annotation>
+      <xs:documentation> Main economy configuration. Toggles init, load from storage, save to
+        storage, respawn for selected groups of entities in CE. </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:all>
+        <xs:element name="dynamic" type="EconomyConfigLine" minOccurs="0" />
+        <xs:element name="animals" type="EconomyConfigLine" minOccurs="0" />
+        <xs:element name="zombies" type="EconomyConfigLine" minOccurs="0" />
+        <xs:element name="vehicles" type="EconomyConfigLine" minOccurs="0" />
+        <xs:element name="randoms" type="EconomyConfigLine" minOccurs="0" />
+        <xs:element name="custom" type="EconomyConfigLine" minOccurs="0" />
+        <xs:element name="building" type="EconomyConfigLine" minOccurs="0" />
+        <xs:element name="player" type="EconomyConfigLine" minOccurs="0" />
+      </xs:all>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

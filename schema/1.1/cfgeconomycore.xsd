@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="economycore" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+  vc:minVersion="1.1">
+  <xs:element name="economycore">
+    <xs:annotation>
+      <xs:documentation>Basic configuration of Central Economy.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="classes">
+          <xs:annotation>
+            <xs:documentation>Configuration of "rootclasses", the parent classes of entities which
+              will be used by the Central Economy.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="rootclass" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="name" type="xs:string" use="required">
+                    <xs:annotation>
+                      <xs:documentation>Name of entity type.</xs:documentation>
+                    </xs:annotation>
+                  </xs:attribute>
+                  <xs:attribute name="reportMemoryLOD">
+                    <xs:annotation>
+                      <xs:documentation>Toggle console messages about missing memory LODs (default
+                        is `yes`).</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="yes" />
+                        <xs:enumeration value="no" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="act">
+                    <xs:annotation>
+                      <xs:documentation>The entity type.</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="none">
+                          <xs:annotation>
+                            <xs:documentation>The entity represents loot.</xs:documentation>
+                          </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="character">
+                          <xs:annotation>
+                            <xs:documentation>The entity represents a character (e.g. animal or
+                              infected).</xs:documentation>
+                          </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="car">
+                          <xs:annotation>
+                            <xs:documentation>The entity represents a moveable vehicle.</xs:documentation>
+                          </xs:annotation>
+                        </xs:enumeration>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="defaults">
+          <xs:annotation>
+            <xs:documentation>Default values for game variables.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="default" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                  <xs:documentation>Game variable definition.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:attribute name="name" use="required">
+                    <xs:annotation>
+                      <xs:documentation>Name of the variable.</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="world_segments">
+                          <xs:annotation>
+                            <xs:documentation>Specifies how many segments the world is split into by
+                              CE - this affects saving, loading, cleanup and other processing events
+                              - it's performance critical for large maps. <br /> Type: `integer`. <br />
+                              Default (for Chernarus map): `12`.</xs:documentation>
+                          </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="backup_period">
+                          <xs:annotation>
+                            <xs:documentation>Period of regular backup creation (in minutes). <br />
+                              Type: `integer`. <br /> Default: `60`.</xs:documentation>
+                          </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="backup_count">
+                          <xs:annotation>
+                            <xs:documentation>Count of backups to keep. <br /> Type: `integer`. <br />
+                              Default: `12`.</xs:documentation>
+                          </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="backup_startup">
+                          <xs:annotation>
+                            <xs:documentation>Whether to process the backup when the server is
+                              started. <br /> Type: `boolean`. <br /> Default: `false`.</xs:documentation>
+                          </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="dyn_radius">
+                          <xs:annotation>
+                            <xs:documentation>Default value for dynamic infected zone - size of the
+                              zone (in meters). <br /> Type: `float`. <br /> Default: `20`.</xs:documentation>
+                          </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="dyn_smin">
+                          <xs:annotation>
+                            <xs:documentation>Default value for dynamic infected zone - minimal
+                              static count. <br /> Type: `float`. <br /> Default: `0`.</xs:documentation>
+                          </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="dyn_smax">
+                          <xs:annotation>
+                            <xs:documentation>Default value for dynamic infected zone - maximum
+                              static count. <br /> Type: `float`. <br /> Default: `0`.</xs:documentation>
+                          </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="dyn_dmin">
+                          <xs:annotation>
+                            <xs:documentation>Default value for dynamic infected zone - minimal
+                              dynamic count. <br /> Type: `float`. <br /> Default: `0`.</xs:documentation>
+                          </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="dyn_dmax">
+                          <xs:annotation>
+                            <xs:documentation>Default value for dynamic infected zone - maximum
+                              dynamic count. <br /> Type: `float`. <br /> Default: `0`.</xs:documentation>
+                          </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="save_events_startup">
+                          <xs:annotation>
+                            <xs:documentation>Whether to create `data/events.bin` on startup.
+                              Disabling this can be useful for minimal hive setups <br /> Type:
+                              `boolean`. <br /> Default: `true`.</xs:documentation>
+                          </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="save_types_startup">
+                          <xs:annotation>
+                            <xs:documentation>Whether to create `data/types.bin` on startup.
+                              Disabling this can be useful for minimal hive setups <br /> Type:
+                              `boolean`. <br /> Default: `true`.</xs:documentation>
+                          </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="log_hivewarning">
+                          <xs:annotation>
+                            <xs:documentation>Whether to enable some of the hive warning messages in
+                              the console. <br /> Type: `boolean`. <br /> Default: `true`.</xs:documentation>
+                          </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="log_storageinfo">
+                          <xs:annotation>
+                            <xs:documentation>Whether to enable periodic storage info messages in
+                              the console (if CE stores files). <br /> Type: `boolean`. <br />
+                              Default: `false`.</xs:documentation>
+                          </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="log_missionfilewarning">
+                          <xs:annotation>
+                            <xs:documentation>Whether to enable console warnings about mission
+                              files. Typically, sandbox mode does not require all of these. <br />
+                              Type: `boolean`. <br /> Default: `true`.</xs:documentation>
+                          </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="log_ce_loop">
+                          <xs:annotation>
+                            <xs:documentation>Whether to enable logging of CE loop timing and basic
+                              statistical information. <br /> Type: `boolean`. <br /> Default:
+                              `false`.</xs:documentation>
+                          </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="log_ce_dynamicevent">
+                          <xs:annotation>
+                            <xs:documentation>Whether to enable logging of CE specific - dynamic
+                              events specific. <br /> Type: `boolean`. <br /> Default: `false`.</xs:documentation>
+                          </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="log_ce_vehicle">
+                          <xs:annotation>
+                            <xs:documentation> Whether to enable logging of CE specific - vehicle
+                              specific.<br /> Type: `boolean`. <br /> Default: `false`.</xs:documentation>
+                          </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="log_ce_lootspawn">
+                          <xs:annotation>
+                            <xs:documentation>Whether to enable logging of CE specific - loot spawn
+                              specific. <br /> Type: `boolean`. <br /> Default: `false`.</xs:documentation>
+                          </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="log_ce_lootcleanup">
+                          <xs:annotation>
+                            <xs:documentation>Whether to enable logging of CE specific - cleanup
+                              specific. <br /> Type: `boolean`. <br /> Default: `false`.</xs:documentation>
+                          </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="log_ce_lootrespawn">
+                          <xs:annotation>
+                            <xs:documentation>Whether to enable logging of CE specific - loot
+                              respawn specific. <br /> Type: `boolean`. <br /> Default: `false`.</xs:documentation>
+                          </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="log_ce_statistics">
+                          <xs:annotation>
+                            <xs:documentation>Whether to enable logging of CE specific - statistical
+                              data. <br /> Type: `boolean`. <br /> Default: `false`.</xs:documentation>
+                          </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="log_ce_zombie">
+                          <xs:annotation>
+                            <xs:documentation>Whether to enable logging of CE specific - infected
+                              related data. <br />Type: `boolean`. <br /> Default: `false`.</xs:documentation>
+                          </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="log_ce_animal">
+                          <xs:annotation>
+                            <xs:documentation>Whether to enable logging of CE specific - animal
+                              related data. <br />Type: `boolean`. <br /> Default: `false`.</xs:documentation>
+                          </xs:annotation>
+                        </xs:enumeration>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="value" type="xs:string" use="required">
+                    <xs:annotation>
+                      <xs:documentation>Default value of the variable.</xs:documentation>
+                    </xs:annotation>
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ce">
+          <xs:annotation>
+            <xs:documentation>Definition of custom CE files.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="file" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="name" type="xs:string" use="required">
+                    <xs:annotation>
+                      <xs:documentation>The name of the custom XML file.</xs:documentation>
+                    </xs:annotation>
+                  </xs:attribute>
+                  <xs:attribute name="type" use="required">
+                    <xs:annotation>
+                      <xs:documentation>The type of the custom XML file.</xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="economy">
+                          <xs:annotation>
+                            <xs:documentation>Treat file as `economy.xml`</xs:documentation>
+                          </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="events">
+                          <xs:annotation>
+                            <xs:documentation>Treat file as `events.xml`</xs:documentation>
+                          </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="globals">
+                          <xs:annotation>
+                            <xs:documentation>Treat file as `globals.xml`</xs:documentation>
+                          </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="messages">
+                          <xs:annotation>
+                            <xs:documentation>Treat file as `messages.xml`</xs:documentation>
+                          </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="spawnabletypes">
+                          <xs:annotation>
+                            <xs:documentation>Treat file as `cfgspawnabletypes.xml`.</xs:documentation>
+                          </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="types">
+                          <xs:annotation>
+                            <xs:documentation>Treat file as `types.xml`.</xs:documentation>
+                          </xs:annotation>
+                        </xs:enumeration>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="folder" type="xs:string" use="required">
+              <xs:annotation>
+                <xs:documentation>The name of the folder, where custom XML files are stored.</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

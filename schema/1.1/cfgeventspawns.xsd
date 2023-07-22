@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="eventposdef" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+  vc:minVersion="1.1">
+  <xs:element name="eventposdef">
+    <xs:annotation>
+      <xs:documentation>Definitions of position and rotation for certain types of dynamic events.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="event">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="zone" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="smin" type="xs:unsignedInt" />
+                  <xs:attribute name="smax" type="xs:unsignedInt" />
+                  <xs:attribute name="dmin" type="xs:unsignedInt" />
+                  <xs:attribute name="dmax" type="xs:unsignedInt" />
+                  <xs:attribute name="r" type="xs:unsignedInt" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="pos" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="x" type="xs:float" use="required" />
+                  <xs:attribute name="z" type="xs:float" use="required" />
+                  <xs:attribute name="a" type="xs:float" />
+                  <xs:attribute name="y" type="xs:float" />
+                  <xs:attribute name="group" type="xs:string" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
