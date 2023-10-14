@@ -1,0 +1,67 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "title": "DayZ Object Spawner",
+    "description": "DayZ Object Spawner custom spawn list",
+    "properties": {
+        "Objects": {
+            "description": "Objects to spawn",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "description": "Class name of the object to be spawned",
+                        "type": "string"
+                    },
+                    "pos": {
+                        "description": "Position of the object in the world",
+                        "type": "array",
+                        "items": {
+                            "type": "number"
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                    },
+                    "ypr": {
+                        "description": "Orientation as Yaw, Pitch and Roll in degrees",
+                        "type": "array",
+                        "items": {
+                            "type": "number"
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                    },
+                    "scale": {
+                        "description": "Multiplayer of the original object's size",
+                        "type": "number",
+                        "minimum": 0,
+                        "exclusiveMinimum": true
+                    },
+                    "enableCEPersistency": {
+                        "description": "Spawns without persistence. Once the player takes it, persistence will be enabled if available.",
+                        "anyOf": [
+                            {
+                                "type": "boolean"
+                            },
+                            {
+                                "type": "integer",
+                                "enum": [
+                                    0,
+                                    1
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "required": [
+                    "name",
+                    "pos",
+                    "ypr",
+                    "scale"
+                ]
+            },
+            "minItems": 1
+        }
+    }
+}
