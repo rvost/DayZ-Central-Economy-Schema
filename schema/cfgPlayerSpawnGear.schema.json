@@ -1,0 +1,294 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "type": "object",
+    "title": "DayZ cfgPlayerSpawnGear",
+    "description": "DayZ Spawning Gear Configuration",
+    "definitions": {
+        "attributes": {
+            "description": "These are common attributes used by the other structures and defines the basic stats of the item. If set, random value between the min and max is calculated and set during the item spawn.",
+            "type": "object",
+            "properties": {
+                "healthMin": {
+                    "description": "The minimum health attribute value for the item.",
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "default": 1
+                },
+                "healthMax": {
+                    "description": "The maximum health attribute value for the item.",
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "default": 1
+                },
+                "quantityMin": {
+                    "description": "The minimum quantity attribute value for the item.",
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100,
+                    "default": 1
+                },
+                "quantityMax": {
+                    "description": "The maximum quantity attribute value for the item.",
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100,
+                    "default": 1
+                }
+            },
+            "required": [
+                "healthMin",
+                "healthMax"
+            ],
+            "additionalProperties": false,
+            "default": {
+                "healthMin": 1,
+                "healthMax": 1,
+                "quantityMin": 1,
+                "quantityMax": 1
+            }
+        },
+        "quickBarSlot": {
+            "description": "The quick bar slot where the item can be placed. Value of -1 means 'do not assign'.",
+            "type": "integer",
+            "enum": [
+                -1,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                0
+            ]
+        },
+        "simpleChildrenUseDefaultAttributes": {
+            "description": "Indicates whether simple children items use default attributes defined on parent or configuration default.",
+            "anyOf": [
+                {
+                    "type": "boolean"
+                },
+                {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ]
+                }
+            ],
+            "default": true
+        },
+        "simpleChildrenTypes": {
+            "description": "An array of items (typename) that will be spawned under the parent (defined by itemType).",
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "complexChildrenTypes": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "itemType": {
+                        "description": "Name of item to spawn (typename)",
+                        "type": "string"
+                    },
+                    "attributes": {
+                        "$ref": "#/definitions/attributes"
+                    },
+                    "quickBarSlot": {
+                        "$ref": "#/definitions/quickBarSlot"
+                    },
+                    "simpleChildrenUseDefaultAttributes": {
+                        "$ref": "#/definitions/simpleChildrenUseDefaultAttributes"
+                    },
+                    "simpleChildrenTypes": {
+                        "$ref": "#/definitions/simpleChildrenTypes"
+                    }
+                },
+                "required": [
+                    "itemType",
+                    "attributes",
+                    "quickBarSlot"
+                ],
+                "additionalProperties": false
+            }
+        }
+    },
+    "properties": {
+        "spawnWeight": {
+            "description": "Spawn weight. Higher number means higher chance for spawn selection.",
+            "type": "integer",
+            "minimum": 1,
+            "default": 1
+        },
+        "name": {
+            "description": "Name (can be any string)",
+            "type": "string"
+        },
+        "characterTypes": {
+            "description": "An array of character types (typename) associated with the preset. Spawned in random order.",
+            "type": "array",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "SurvivorM_Mirek",
+                    "SurvivorM_Boris",
+                    "SurvivorM_Cyril",
+                    "SurvivorM_Denis",
+                    "SurvivorM_Elias",
+                    "SurvivorM_Francis",
+                    "SurvivorM_Guo",
+                    "SurvivorM_Hassan",
+                    "SurvivorM_Indar",
+                    "SurvivorM_Jose",
+                    "SurvivorM_Kaito",
+                    "SurvivorM_Lewis",
+                    "SurvivorM_Manua",
+                    "SurvivorM_Niki",
+                    "SurvivorM_Oliver",
+                    "SurvivorM_Peter",
+                    "SurvivorM_Quinn",
+                    "SurvivorM_Rolf",
+                    "SurvivorM_Seth",
+                    "SurvivorM_Taiki",
+                    "SurvivorF_Eva",
+                    "SurvivorF_Frida",
+                    "SurvivorF_Gabi",
+                    "SurvivorF_Helga",
+                    "SurvivorF_Irena",
+                    "SurvivorF_Judy",
+                    "SurvivorF_Keiko",
+                    "SurvivorF_Linda",
+                    "SurvivorF_Maria",
+                    "SurvivorF_Naomi",
+                    "SurvivorF_Baty"
+                ]
+            },
+            "minItems": 1
+        },
+        "attachmentSlotItemSets": {
+            "description": "An array of AttachmentSlots structures which is used for character attachments spawning.",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "slotName": {
+                        "description": "The name of the attachment slot for the character, derived from CfgSlots.",
+                        "type": "string",
+                        "enum": [
+                            "Body",
+                            "Legs",
+                            "Feet",
+                            "shoulderL",
+                            "shoulderR",
+                            "Vest",
+                            "Back",
+                            "Eyewear"
+                        ]
+                    },
+                    "discreteItemSets": {
+                        "description": "An array of discrete items that can be attached to the slot.",
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "description": "Configuration of specific character attachment(slot) and its attachments/cargo, for example weapon(s) and its attachments. You can setup multiple variants for each slot. Its spawning chance is driven by the spawnWeight.",
+                            "properties": {
+                                "itemType": {
+                                    "description": "The type or name of the item in the set.",
+                                    "type": "string"
+                                },
+                                "spawnWeight": {
+                                    "description": "Spawn weight. Higher number means higher chance for spawn selection",
+                                    "type": "integer",
+                                    "minimum": 1,
+                                    "default": 1
+                                },
+                                "attributes": {
+                                    "$ref": "#/definitions/attributes"
+                                },
+                                "quickBarSlot": {
+                                    "$ref": "#/definitions/quickBarSlot"
+                                },
+                                "complexChildrenTypes": {
+                                    "description": "An array of items that will be spawned under the parent (defined by itemType).",
+                                    "$ref": "#/definitions/complexChildrenTypes"
+                                },
+                                "simpleChildrenUseDefaultAttributes": {
+                                    "$ref": "#/definitions/simpleChildrenUseDefaultAttributes"
+                                },
+                                "simpleChildrenTypes": {
+                                    "$ref": "#/definitions/simpleChildrenTypes"
+                                }
+                            },
+                            "required": [
+                                "itemType",
+                                "spawnWeight",
+                                "attributes",
+                                "quickBarSlot"
+                            ],
+                            "additionalProperties": false
+                        }
+                    }
+                },
+                "required": [
+                    "slotName",
+                    "discreteItemSets"
+                ],
+                "additionalProperties": false
+            }
+        },
+        "discreteUnsortedItemSets": {
+            "description": "An array of DiscreteUnsortedItemSets structures which is used for character cargo spawning.",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "description": "Name (can be any string)",
+                        "type": "string"
+                    },
+                    "spawnWeight": {
+                        "description": "Spawn weight. Higher number means higher chance for spawn selection",
+                        "type": "integer",
+                        "minimum": 1,
+                        "default": 1
+                    },
+                    "attributes": {
+                        "$ref": "#/definitions/attributes"
+                    },
+                    "complexChildrenTypes": {
+                        "description": "An array of items that will be spawned in any of the characters cargo.",
+                        "$ref": "#/definitions/complexChildrenTypes"
+                    },
+                    "simpleChildrenUseDefaultAttributes": {
+                        "$ref": "#/definitions/simpleChildrenUseDefaultAttributes"
+                    },
+                    "simpleChildrenTypes": {
+                        "description": "An array of items (typename) that will be spawned in any of the characters cargo.",
+                        "$ref": "#/definitions/simpleChildrenTypes"
+                    }
+                },
+                "required": [
+                    "name",
+                    "spawnWeight",
+                    "attributes"
+                ],
+                "additionalProperties": false
+            }
+        }
+    },
+    "required": [
+        "spawnWeight",
+        "name",
+        "characterTypes",
+        "attachmentSlotItemSets",
+        "discreteUnsortedItemSets"
+    ],
+    "additionalProperties": false
+}
