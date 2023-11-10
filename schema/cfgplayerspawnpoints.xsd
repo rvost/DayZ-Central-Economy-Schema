@@ -1,153 +1,236 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema id="playerspawnpoints" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:element name="generator_posbubbles">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element name="pos" minOccurs="0" maxOccurs="unbounded">
-          <xs:complexType>
-            <xs:attribute name="x">
+  <xs:simpleType name="OptionalInt">
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="-1" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="Position">
+    <xs:attribute name="x">
+      <xs:simpleType>
+        <xs:restriction base="xs:float">
+          <xs:minInclusive value="0" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="z">
+      <xs:simpleType>
+        <xs:restriction base="xs:float">
+          <xs:minInclusive value="0" />
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="GeneratorPosbubbles">
+    <xs:choice>
+      <xs:element name="group" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="pos" minOccurs="0" maxOccurs="unbounded" type="Position" />
+          </xs:sequence>
+          <xs:attribute name="name" type="xs:string" use="required" />
+          <xs:attribute name="lifetime" type="OptionalInt" use="optional" />
+          <xs:attribute name="counter" type="OptionalInt" use="optional" />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="pos" minOccurs="0" maxOccurs="unbounded" type="Position" />
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:complexType name="SpawnSetup">
+    <xs:sequence>
+      <xs:element name="spawn_params" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="min_dist_infected" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>Minimum distance used to rate point against infected in meters.</xs:documentation>
+              </xs:annotation>
               <xs:simpleType>
                 <xs:restriction base="xs:float">
                   <xs:minInclusive value="0" />
                 </xs:restriction>
               </xs:simpleType>
-            </xs:attribute>
-            <xs:attribute name="z">
+            </xs:element>
+            <xs:element name="max_dist_infected" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>Maximum distance used to rate point against infected in meters.</xs:documentation>
+              </xs:annotation>
               <xs:simpleType>
                 <xs:restriction base="xs:float">
                   <xs:minInclusive value="0" />
                 </xs:restriction>
               </xs:simpleType>
-            </xs:attribute>
-          </xs:complexType>
-        </xs:element>
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
+            </xs:element>
+            <xs:element name="min_dist_player" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>Minimum distance used to rate point against other players in
+                  meters.</xs:documentation>
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:float">
+                  <xs:minInclusive value="0" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="max_dist_player" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>Maximum distance used to rate point against other players in
+                  meters.</xs:documentation>
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:float">
+                  <xs:minInclusive value="0" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="min_dist_static" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>Minimum distance used to rate point against buildings in meters.</xs:documentation>
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:float">
+                  <xs:minInclusive value="0" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="max_dist_static" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>Maximum distance used to rate point against buildings in meters.</xs:documentation>
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:float">
+                  <xs:minInclusive value="0" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+          </xs:all>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="generator_params" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="grid_density" type="xs:unsignedInt" minOccurs="0" />
+            <xs:element name="grid_width" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>Total width of grid in meters.</xs:documentation>
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:float">
+                  <xs:minInclusive value="0" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="grid_height" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>Total height of grid in meters.</xs:documentation>
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:float">
+                  <xs:minInclusive value="0" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="min_dist_static" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>Minimum distance from buildings for valid spawn point.</xs:documentation>
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:float">
+                  <xs:minInclusive value="0" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="max_dist_static" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>Maximum distance from buildings for valid spawn point.</xs:documentation>
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:float">
+                  <xs:minInclusive value="0" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="min_steepness" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>Minimum terrain slope for valid spawn point.</xs:documentation>
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:float">
+                  <xs:minInclusive value="-90" />
+                  <xs:maxInclusive value="90" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+            <xs:element name="max_steepness" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>Maximum terrain slope for valid spawn point.</xs:documentation>
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:float">
+                  <xs:minInclusive value="-90" />
+                  <xs:maxInclusive value="90" />
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="group_params">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="enablegroups" type="xs:boolean">
+              <xs:annotation>
+                <xs:documentation>Enables and disables the group spawning functionality. If turned
+                  off, the functionality ignores groups completely and reads the file as a simple
+                  list of spawn points.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="lifetime" type="OptionalInt">
+              <xs:annotation>
+                <xs:documentation>This is a timer (in seconds) for how long the group will stay
+                  active. Can be turned off by putting in value of -1 and it can be overwritten for
+                  each specific group.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="counter" type="OptionalInt">
+              <xs:annotation>
+                <xs:documentation> Defines number of players that will reset the lifetime if they
+                  spawn within the group. Can be turned off by putting in value of -1 and it can be
+                  overwritten for each specific group.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="generator_posbubbles" type="GeneratorPosbubbles" minOccurs="0"
+        maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+
   <xs:element name="playerspawnpoints">
     <xs:complexType>
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="fresh">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="spawn_params" minOccurs="0" maxOccurs="unbounded">
-                <xs:complexType>
-                  <xs:all>
-                    <xs:element name="min_dist_infected" minOccurs="0">
-                      <xs:simpleType>
-                        <xs:restriction base="xs:float">
-                          <xs:minInclusive value="0" />
-                        </xs:restriction>
-                      </xs:simpleType>
-                    </xs:element>
-                    <xs:element name="max_dist_infected" minOccurs="0">
-                      <xs:simpleType>
-                        <xs:restriction base="xs:float">
-                          <xs:minInclusive value="0" />
-                        </xs:restriction>
-                      </xs:simpleType>
-                    </xs:element>
-                    <xs:element name="min_dist_player" minOccurs="0">
-                      <xs:simpleType>
-                        <xs:restriction base="xs:float">
-                          <xs:minInclusive value="0" />
-                        </xs:restriction>
-                      </xs:simpleType>
-                    </xs:element>
-                    <xs:element name="max_dist_player" minOccurs="0">
-                      <xs:simpleType>
-                        <xs:restriction base="xs:float">
-                          <xs:minInclusive value="0" />
-                        </xs:restriction>
-                      </xs:simpleType>
-                    </xs:element>
-                    <xs:element name="min_dist_static" minOccurs="0">
-                      <xs:simpleType>
-                        <xs:restriction base="xs:float">
-                          <xs:minInclusive value="0" />
-                        </xs:restriction>
-                      </xs:simpleType>
-                    </xs:element>
-                    <xs:element name="max_dist_static" minOccurs="0">
-                      <xs:simpleType>
-                        <xs:restriction base="xs:float">
-                          <xs:minInclusive value="0" />
-                        </xs:restriction>
-                      </xs:simpleType>
-                    </xs:element>
-                  </xs:all>
-                </xs:complexType>
-              </xs:element>
-              <xs:element name="generator_params" minOccurs="0" maxOccurs="unbounded">
-                <xs:complexType>
-                  <xs:sequence>
-                    <xs:element name="grid_density" type="xs:unsignedInt" minOccurs="0" />
-                    <xs:element name="grid_width" minOccurs="0">
-                      <xs:simpleType>
-                        <xs:restriction base="xs:float">
-                          <xs:minInclusive value="0" />
-                        </xs:restriction>
-                      </xs:simpleType>
-                    </xs:element>
-                    <xs:element name="grid_height" minOccurs="0">
-                      <xs:simpleType>
-                        <xs:restriction base="xs:float">
-                          <xs:minInclusive value="0" />
-                        </xs:restriction>
-                      </xs:simpleType>
-                    </xs:element>
-                    <xs:element name="min_dist_static" minOccurs="0">
-                      <xs:simpleType>
-                        <xs:restriction base="xs:float">
-                          <xs:minInclusive value="0" />
-                        </xs:restriction>
-                      </xs:simpleType>
-                    </xs:element>
-                    <xs:element name="max_dist_static" minOccurs="0">
-                      <xs:simpleType>
-                        <xs:restriction base="xs:float">
-                          <xs:minInclusive value="0" />
-                        </xs:restriction>
-                      </xs:simpleType>
-                    </xs:element>
-                    <xs:element name="min_steepness" minOccurs="0">
-                      <xs:simpleType>
-                        <xs:restriction base="xs:float">
-                          <xs:minInclusive value="-90" />
-                          <xs:maxInclusive value="90" />
-                        </xs:restriction>
-                      </xs:simpleType>
-                    </xs:element>
-                    <xs:element name="max_steepness" minOccurs="0">
-                      <xs:simpleType>
-                        <xs:restriction base="xs:float">
-                          <xs:minInclusive value="-90" />
-                          <xs:maxInclusive value="90" />
-                        </xs:restriction>
-                      </xs:simpleType>
-                    </xs:element>
-                  </xs:sequence>
-                </xs:complexType>
-              </xs:element>
-              <xs:element ref="generator_posbubbles" minOccurs="0" maxOccurs="unbounded" />
-            </xs:sequence>
-          </xs:complexType>
+      <xs:sequence>
+        <xs:element name="fresh" type="SpawnSetup" minOccurs="0" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Spawn point configuration for fresh players.</xs:documentation>
+          </xs:annotation>
         </xs:element>
-        <xs:element name="hop">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element ref="generator_posbubbles" minOccurs="0" maxOccurs="unbounded" />
-            </xs:sequence>
-          </xs:complexType>
+        <xs:element name="hop" type="SpawnSetup" minOccurs="0" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Spawn point configuration for players that hop from server of the same
+              map. Only relevant for official servers.</xs:documentation>
+          </xs:annotation>
         </xs:element>
-        <xs:element name="travel">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element ref="generator_posbubbles" minOccurs="0" maxOccurs="unbounded" />
-            </xs:sequence>
-          </xs:complexType>
+        <xs:element name="travel" type="SpawnSetup" minOccurs="0" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Spawn point configuration for players that travel from a server with
+              different map. Only relevant for official servers.</xs:documentation>
+          </xs:annotation>
         </xs:element>
-      </xs:choice>
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
 </xs:schema>
