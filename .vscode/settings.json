@@ -92,5 +92,9 @@
             "pattern": "**/env/*.xml",
             "systemId": "https://rvost.github.io/DayZ-Central-Economy-Schema/env/territories.xsd"
         }
-    ]
+    ],
+    "files.exclude": {
+        "**/bin": true,
+        "**/obj": true
+    }
 }
