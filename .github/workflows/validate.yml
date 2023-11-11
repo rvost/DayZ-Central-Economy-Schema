@@ -1,0 +1,41 @@
+name: Validate Schema
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '40 23 * * 3' # DayZ-Central-Economy is usually updated on Tuesdays or Wednesdays, run workflow the next night
+
+env:
+  PROJECT_PATH: src/SchemaValidator/SchemaValidator.fsproj
+    
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 7.0.x
+      
+      - name: Build
+        run: dotnet build ${{ env.PROJECT_PATH }} -c Release -o publish 
+      
+      - name: Checkout CE files
+        uses: actions/checkout@v4
+        with:
+          repository: BohemiaInteractive/DayZ-Central-Economy
+          path: DayZ-Central-Economy
+          sparse-checkout: |
+            dayzOffline.chernarusplus
+            dayzOffline.enoch
+
+      - name: Verify against chernarusplus
+        run: dotnet publish/SchemaValidator.dll "DayZ-Central-Economy/dayzOffline.chernarusplus"
+        continue-on-error: true
+      
+      - name: Verify against enoch
+        run: dotnet publish/SchemaValidator.dll "DayZ-Central-Economy/dayzOffline.enoch"
+        continue-on-error: true
