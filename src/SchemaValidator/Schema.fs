@@ -13,7 +13,7 @@ let resolveXsd (path: string) =
     | Pattern "**/cfgenvironment.xml" -> Some("cfgenvironment.xsd")
     | Pattern "**/cfgeventgroups.xml" -> Some("cfgeventgroups.xsd")
     | Pattern "**/cfgeventspawns.xml" -> Some("cfgeventspawns.xsd")
-    | Pattern "**/cfgignorelist.xml" -> Some("cfgignorelist.xsd")
+    | Pattern "**/cfgignorelist.xml" -> Some("cfgIgnoreList.xsd")
     | Pattern "**/cfglimitsdefinition.xml" -> Some("cfglimitsdefinition.xsd")
     | Pattern "**/cfglimitsdefinitionuser.xml" -> Some("cfglimitsdefinitionuser.xsd")
     | Pattern "**/cfgplayerspawnpoints.xml" -> Some("cfgplayerspawnpoints.xsd")
