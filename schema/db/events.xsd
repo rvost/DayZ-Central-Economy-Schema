@@ -174,5 +174,9 @@
         </xs:element>
       </xs:choice>
     </xs:complexType>
+    <xs:unique name="UniqueEventName">
+      <xs:selector xpath="event" />
+      <xs:field xpath="@name" />
+    </xs:unique>
   </xs:element>
 </xs:schema>

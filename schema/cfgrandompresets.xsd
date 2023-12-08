@@ -75,5 +75,9 @@
         </xs:element>
       </xs:choice>
     </xs:complexType>
+    <xs:unique name="UniquePresetName">
+      <xs:selector xpath="cargo|attachments" />
+      <xs:field xpath="@name" />
+    </xs:unique>
   </xs:element>
 </xs:schema>

@@ -217,18 +217,30 @@
           <xs:annotation>
             <xs:documentation>Spawn point configuration for fresh players.</xs:documentation>
           </xs:annotation>
+          <xs:unique name="UniqueFreshGroupName">
+            <xs:selector xpath="generator_posbubbles/group" />
+            <xs:field xpath="@name" />
+          </xs:unique>
         </xs:element>
         <xs:element name="hop" type="SpawnSetup" minOccurs="0" maxOccurs="1">
           <xs:annotation>
             <xs:documentation>Spawn point configuration for players that hop from server of the same
               map. Only relevant for official servers.</xs:documentation>
           </xs:annotation>
+          <xs:unique name="UniqueHopGroupName">
+            <xs:selector xpath="generator_posbubbles/group" />
+            <xs:field xpath="@name" />
+          </xs:unique>
         </xs:element>
         <xs:element name="travel" type="SpawnSetup" minOccurs="0" maxOccurs="1">
           <xs:annotation>
             <xs:documentation>Spawn point configuration for players that travel from a server with
               different map. Only relevant for official servers.</xs:documentation>
           </xs:annotation>
+          <xs:unique name="UniqueTravelGroupName">
+            <xs:selector xpath="generator_posbubbles/group" />
+            <xs:field xpath="@name" />
+          </xs:unique>
         </xs:element>
       </xs:sequence>
     </xs:complexType>

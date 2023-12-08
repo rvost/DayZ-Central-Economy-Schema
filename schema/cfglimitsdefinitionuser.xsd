@@ -40,6 +40,10 @@
               </xs:element>
             </xs:sequence>
           </xs:complexType>
+          <xs:unique name="UniqueUsageName">
+            <xs:selector xpath="user" />
+            <xs:field xpath="@name" />
+          </xs:unique>
         </xs:element>
         <xs:element name="valueflags">
           <xs:annotation>
@@ -75,6 +79,10 @@
               </xs:element>
             </xs:sequence>
           </xs:complexType>
+          <xs:unique name="UniqueValueName">
+            <xs:selector xpath="user" />
+            <xs:field xpath="@name" />
+          </xs:unique>
         </xs:element>
       </xs:choice>
     </xs:complexType>

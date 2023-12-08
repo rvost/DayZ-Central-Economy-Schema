@@ -23,6 +23,10 @@
               </xs:element>
             </xs:sequence>
           </xs:complexType>
+          <xs:unique name="UniqueCategoryName">
+            <xs:selector xpath="category" />
+            <xs:field xpath="@name" />
+          </xs:unique>
         </xs:element>
         <xs:element name="tags">
           <xs:annotation>
@@ -41,6 +45,10 @@
               </xs:element>
             </xs:sequence>
           </xs:complexType>
+          <xs:unique name="UniqueTagName">
+            <xs:selector xpath="tag" />
+            <xs:field xpath="@name" />
+          </xs:unique>
         </xs:element>
         <xs:element name="usageflags">
           <xs:annotation>
@@ -59,6 +67,10 @@
               </xs:element>
             </xs:sequence>
           </xs:complexType>
+          <xs:unique name="UniqueUsageName">
+            <xs:selector xpath="usage" />
+            <xs:field xpath="@name" />
+          </xs:unique>
         </xs:element>
         <xs:element name="valueflags">
           <xs:annotation>
@@ -77,6 +89,10 @@
               </xs:element>
             </xs:sequence>
           </xs:complexType>
+          <xs:unique name="UniqueValueName">
+            <xs:selector xpath="value" />
+            <xs:field xpath="@name" />
+          </xs:unique>
         </xs:element>
       </xs:choice>
     </xs:complexType>
