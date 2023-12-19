@@ -8,36 +8,173 @@
             <xs:attribute name="name" use="required">
               <xs:simpleType>
                 <xs:restriction base="xs:string">
-                  <xs:enumeration value="AnimalMaxCount" />
-                  <xs:enumeration value="CleanupAvoidance" />
-                  <xs:enumeration value="CleanupLifetimeDeadAnimal" />
-                  <xs:enumeration value="CleanupLifetimeDeadInfected" />
-                  <xs:enumeration value="CleanupLifetimeDeadPlayer" />
-                  <xs:enumeration value="CleanupLifetimeDefault" />
-                  <xs:enumeration value="CleanupLifetimeLimit" />
-                  <xs:enumeration value="CleanupLifetimeRuined" />
-                  <xs:enumeration value="FlagRefreshFrequency" />
-                  <xs:enumeration value="FlagRefreshMaxDuration" />
-                  <xs:enumeration value="IdleModeCountdown" />
-                  <xs:enumeration value="IdleModeStartup" />
-                  <xs:enumeration value="InitialSpawn" />
-                  <xs:enumeration value="LootProxyPlacement" />
-                  <xs:enumeration value="RespawnAttempt" />
-                  <xs:enumeration value="RespawnLimit" />
-                  <xs:enumeration value="RespawnTypes" />
-                  <xs:enumeration value="RestartSpawn" />
-                  <xs:enumeration value="SpawnInitial" />
-                  <xs:enumeration value="TimeHopping" />
-                  <xs:enumeration value="TimeLogin" />
-                  <xs:enumeration value="TimeLogout" />
-                  <xs:enumeration value="TimePenalty" />
-                  <xs:enumeration value="ZombieMaxCount" />
-                  <xs:enumeration value="ZoneSpawnDist" />
-                  <xs:enumeration value="WorldWetTempUpdate" />
-                  <xs:enumeration value="FoodDecay" />
-                  <xs:enumeration value="LootDamageMin" />
-                  <xs:enumeration value="LootDamageMax" />
-                  <xs:enumeration value="LootSpawnAvoidance" />
+                  <xs:enumeration value="AnimalMaxCount">
+                    <xs:annotation>
+                      <xs:documentation>Maximal limit of spawned animals (not ambient) across all
+                        zones in map.</xs:documentation>
+                    </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="CleanupAvoidance">
+                    <xs:annotation>
+                      <xs:documentation>Distance (in **meters**) from player required for item
+                        deletion.</xs:documentation>
+                    </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="CleanupLifetimeDeadAnimal">
+                    <xs:annotation>
+                      <xs:documentation>Default lifetime (in **seconds**) for dead animals.</xs:documentation>
+                    </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="CleanupLifetimeDeadInfected">
+                    <xs:annotation>
+                      <xs:documentation>Default lifetime (in **seconds**) for dead infected.</xs:documentation>
+                    </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="CleanupLifetimeDeadPlayer">
+                    <xs:annotation>
+                      <xs:documentation>Default lifetime (in **seconds**) for dead player.</xs:documentation>
+                    </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="CleanupLifetimeDefault">
+                    <xs:annotation>
+                      <xs:documentation>Default lifetime (in **seconds**) for entities with no
+                        specific economy setup, but damage &gt;= 1.0 (ie. dead).</xs:documentation>
+                    </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="CleanupLifetimeLimit">
+                    <xs:annotation>
+                      <xs:documentation>How many items can be deleted at once during standard
+                        cleanup.</xs:documentation>
+                    </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="CleanupLifetimeRuined">
+                    <xs:annotation>
+                      <xs:documentation>Default lifetime (in **seconds**) for ruined loot.</xs:documentation>
+                    </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="FlagRefreshFrequency">
+                    <xs:annotation>
+                      <xs:documentation>Items lifetime will be refreshed with this frequency.
+                        (**seconds**)</xs:documentation>
+                    </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="FlagRefreshMaxDuration">
+                    <xs:annotation>
+                      <xs:documentation>How long the flag will be refreshing items. (**seconds**)</xs:documentation>
+                    </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="IdleModeCountdown">
+                    <xs:annotation>
+                      <xs:documentation>Activate economy idle mode on empty server after given time.
+                        (**seconds**)</xs:documentation>
+                    </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="IdleModeStartup">
+                    <xs:annotation>
+                      <xs:documentation>0 to disable idle mode on server startup (will still switch
+                        on later if `IdleModeCountdown` is not `0`)</xs:documentation>
+                    </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="InitialSpawn">
+                    <xs:annotation>
+                      <xs:documentation>How much loot will be spawned on server initial start
+                        (without storage). (from **0% to 100%**)</xs:documentation>
+                    </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="LootProxyPlacement">
+                    <xs:annotation>
+                      <xs:documentation>Allow dispatch containers to receive the loot.</xs:documentation>
+                    </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="RespawnAttempt">
+                    <xs:annotation>
+                      <xs:documentation>How many attempts are performed during single item respawn.</xs:documentation>
+                    </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="RespawnLimit">
+                    <xs:annotation>
+                      <xs:documentation>How many items of one type can be spawned at once.</xs:documentation>
+                    </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="RespawnTypes">
+                    <xs:annotation>
+                      <xs:documentation>How many different types can be respawned at once.</xs:documentation>
+                    </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="RestartSpawn">
+                    <xs:annotation>
+                      <xs:documentation>How much loot should be respawned during restart to nomimal.
+                        (from **0% to 100%**)</xs:documentation>
+                    </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="SpawnInitial">
+                    <xs:annotation>
+                      <xs:documentation>How many initial test are allowed for item spawn.</xs:documentation>
+                    </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="TimeHopping">
+                    <xs:annotation>
+                      <xs:documentation>Penalty time (in **seconds**) for server hoppers.</xs:documentation>
+                    </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="TimeLogin">
+                    <xs:annotation>
+                      <xs:documentation>Default login time (in **seconds**, max value 65536).</xs:documentation>
+                    </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="TimeLogout">
+                    <xs:annotation>
+                      <xs:documentation>Default logout time (in **seconds**, max value 65536).</xs:documentation>
+                    </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="TimePenalty">
+                    <xs:annotation>
+                      <xs:documentation>Penalty time (in **seconds**) for player that is still in
+                        play session.</xs:documentation>
+                    </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="ZombieMaxCount">
+                    <xs:annotation>
+                      <xs:documentation>Maximal limit of spawned zombies across all zones in map.</xs:documentation>
+                    </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="ZoneSpawnDist">
+                    <xs:annotation>
+                      <xs:documentation>Distance (in **meters**) to invoke infected spawn in nearby
+                        zone (dynamic infected).</xs:documentation>
+                    </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="WorldWetTempUpdate">
+                    <xs:annotation>
+                      <xs:documentation>Allow update of wetness and temperature values on all items
+                        in the world.</xs:documentation>
+                    </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="FoodDecay">
+                    <xs:annotation>
+                      <xs:documentation>Allow decay on food (requires `WorldWetTempUpdate` set to
+                        `1`).</xs:documentation>
+                    </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="LootDamageMin">
+                    <xs:annotation>
+                      <xs:documentation>Minimum applied damage (in **0..1** range) to any item
+                        spawned through the CE.</xs:documentation>
+                    </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="LootDamageMax">
+                    <xs:annotation>
+                      <xs:documentation>Maximum applied damage (in **0..1** range) to any item
+                        spawned through the CE.</xs:documentation>
+                    </xs:annotation>
+                  </xs:enumeration>
+                  <xs:enumeration value="LootSpawnAvoidance">
+                    <xs:annotation>
+                      <xs:documentation>Controling how far away (in **meters**) a player should be
+                        from a loot group for loot to spawn inside of it (used to be hard-coded to
+                        `50`).</xs:documentation>
+                    </xs:annotation>
+                  </xs:enumeration>
                 </xs:restriction>
               </xs:simpleType>
             </xs:attribute>
