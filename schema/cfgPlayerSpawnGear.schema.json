@@ -169,8 +169,7 @@
                     "SurvivorF_Naomi",
                     "SurvivorF_Baty"
                 ]
-            },
-            "minItems": 1
+            }
         },
         "attachmentSlotItemSets": {
             "description": "An array of AttachmentSlots structures which is used for character attachments spawning.",
