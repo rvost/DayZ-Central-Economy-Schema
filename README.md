@@ -20,7 +20,10 @@ This repository aims to provide an **unofficial** XSD schema along with some doc
 
 Please note that while validating against a schema can eliminate syntax errors and catch many errors that are limited to one file, *it can't help with errors that span multiple files*, such as using a category in `types.xml` that is not defined in `cfglimitsdefinition.xml`.
 
-Validating such rules requires more effort than using a common text editor and an XSD file. It can be done with an extension. I'm currently considering writing a VS Code extension for comprehensive editing of DayZ CE files. I'm not sure as there are already many different tools for this. Please let me know if you are interested.
+Validating such rules requires more effort than using a common text editor and an XSD file.
+
+> [!TIP]
+> It can be done in VS Code (or any Code-based editor like [VSCodium](https://vscodium.com/)) using an [extension](https://marketplace.visualstudio.com/items?itemName=rvost.dayz-ce-schema). You can find more about the extension in the [repo](https://github.com/rvost/dayz-ce-schema).
 
 ### Alternative solution
 
