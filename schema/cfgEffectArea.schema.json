@@ -131,16 +131,9 @@
 							"Pos",
 							"Radius",
 							"PosHeight",
-							"NegHeight",
-							"InnerRingCount",
-							"InnerPartDist",
-							"OuterRingToggle",
-							"OuterPartDist",
-							"OuterOffset",
-							"VerticalLayers",
-							"VerticalOffset",
-							"ParticleName"
-						]
+							"NegHeight"
+						],
+						"additionalProperties": false
 					},
 					"PlayerData": {
 						"type": "object",

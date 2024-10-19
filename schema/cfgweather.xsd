@@ -63,15 +63,111 @@
             </xs:all>
           </xs:complexType>
         </xs:element>
-        <xs:element name="wind" minOccurs="0" maxOccurs="1">
+        <xs:element name="windMagnitude" minOccurs="0" maxOccurs="1">
           <xs:complexType>
             <xs:all>
-              <xs:element name="maxspeed" type="xs:unsignedInt" minOccurs="0" />
-              <xs:element name="params" minOccurs="0" maxOccurs="1">
+              <xs:element name="current" type="current" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>Initial conditions of the wind magnitude (target value, time to
+                    change, how long will it stay), restricted by thresholds.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="limits" type="limits" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>What is the range of the wind magnitude value in m/s.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="timelimits" type="timelimits" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>How long does it take to the wind magnitude to change from one
+                    value to other (time in seconds).</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="changelimits" type="changelimits" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>How much should the wind change</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="thresholds" minOccurs="0" maxOccurs="1">
                 <xs:complexType>
                   <xs:attribute name="min" type="UnitValue" />
                   <xs:attribute name="max" type="UnitValue" />
-                  <xs:attribute name="frequency" type="xs:unsignedInt" />
+                  <xs:attribute name="end" type="xs:int" />
+                </xs:complexType>
+              </xs:element>
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="windDirection" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="current" type="current" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>Initial conditions of the wind direction(target value, time to
+                    change, how long will it stay), restricted by thresholds.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="limits" type="limits" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>What is the range of the wind direction (angle in radians).</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="timelimits" type="timelimits" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>How long does it take to the wind direction to change from one
+                    value to other (time in seconds).</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="changelimits" type="changelimits" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>How much should the wind change direction.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="thresholds" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                  <xs:attribute name="min" type="UnitValue" />
+                  <xs:attribute name="max" type="UnitValue" />
+                  <xs:attribute name="end" type="xs:int" />
+                </xs:complexType>
+              </xs:element>
+            </xs:all>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="snowfall" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:all>
+              <xs:element name="current" type="current" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>Initial conditions of the snowfall (target value, time to
+                    change, how long will it stay), restricted by thresholds.</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="limits" type="limits" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>What is the range of the snowfall value (0..1)</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="timelimits" type="timelimits" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation> How long does it take to the snowfall to change from one value
+                    to other (time in seconds).</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="changelimits" type="changelimits" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>How much should the snowfall change (0..1).</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="thresholds" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                  <xs:documentation>What range of the overcast value allows the snowfall to be
+                    preset (min, max overcast value, time in seconds it takes for snowfall to stop
+                    if the overcast is outside of the specified range)</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:attribute name="min" type="UnitValue" />
+                  <xs:attribute name="max" type="UnitValue" />
+                  <xs:attribute name="end" type="xs:int" />
                 </xs:complexType>
               </xs:element>
             </xs:all>

@@ -93,10 +93,9 @@
 							},
 							"required": [
 								"Position",
-								"EyeAccommodation",
-								"UseRaycast",
-								"Radius"
-							]
+								"EyeAccommodation"
+							],
+							"additionalProperties": false
 						}
 					},
 					"InterpolationSpeed": {
