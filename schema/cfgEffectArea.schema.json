@@ -162,8 +162,7 @@
 					"AreaName",
 					"Type",
 					"TriggerType",
-					"Data",
-					"PlayerData"
+					"Data"
 				]
 			}
 		},

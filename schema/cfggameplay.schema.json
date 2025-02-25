@@ -478,6 +478,11 @@
 								}
 							]
 						},
+						"disableColdAreaPlacementCheck":{
+							"description": "Allows placement of garden plots when the ground is frozen.",
+							"type": "boolean",
+							"default": false
+						},
 						"disallowedTypesInUnderground": {
 							"description": "Prevents construction of these items types (including inherited ones) in the underground areas",
 							"type": "array",
@@ -711,6 +716,18 @@
 				}
 			},
 			"additionalProperties": false
+		},
+		"VehicleData":{
+			"description": "",
+			"type":"object",
+			"properties": {
+				"boatDecayMultiplier":{
+					"description": "Multiplies speed of boat decay.",
+					"type": "number",
+					"default": 1
+				}
+			},
+			"additionalProperties": false
 		}
 	},
 	"required": [
@@ -721,5 +738,6 @@
 		"BaseBuildingData",
 		"UIData",
 		"MapData"
-	]
+	],
+	"additionalProperties": false
 }
